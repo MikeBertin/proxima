@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Proxima — the Sun's stellar neighbourhood in 3D</title>
+<meta name="description" content="An interactive 3D map of every star within ~5 parsecs of the Sun: mass, colour, size, distance, planets and more." />
+<style>
+  :root{
+    --bg:#07080f; --ink:#e7ecff; --dim:#9aa3c7; --line:#232a44;
+    --panel:rgba(15,17,30,.86); --panel2:#1a1f38;
+    --accent:#7cc4ff; --accent2:#c58bff; --warm:#ffcc6f;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+  canvas{display:block}
+  #app{position:fixed;inset:0}
+
+  .brand{position:fixed;top:14px;left:16px;z-index:10;pointer-events:none}
+  .brand h1{margin:0;font-size:19px;letter-spacing:.5px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .brand p{margin:2px 0 0;font-size:11px;color:var(--dim);font-family:var(--mono)}
+
+  /* left control panel */
+  .panel{position:fixed;z-index:10;background:var(--panel);backdrop-filter:blur(14px);
+    border:1px solid var(--line);border-radius:12px;padding:12px 13px}
+  #controls{top:64px;left:16px;width:214px;font-size:12px}
+  #controls .grp{margin-bottom:11px}
+  #controls .grp:last-child{margin-bottom:0}
+  #controls label.hd{display:block;font-family:var(--mono);font-size:10px;text-transform:uppercase;
+    letter-spacing:1px;color:var(--dim);margin-bottom:6px}
+  .row{display:flex;flex-wrap:wrap;gap:6px}
+  button{font-family:var(--mono);font-size:11px;color:var(--ink);background:var(--panel2);
+    border:1px solid var(--line);border-radius:7px;padding:5px 8px;cursor:pointer}
+  button:hover{border-color:var(--accent)}
+  button.on{background:linear-gradient(90deg,rgba(124,196,255,.22),rgba(197,139,255,.22));border-color:var(--accent)}
+  input[type=search]{width:100%;box-sizing:border-box;font-family:var(--mono);font-size:12px;
+    color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:6px 8px}
+  .results{margin-top:5px;max-height:180px;overflow:auto}
+  .results div{padding:5px 7px;border-radius:6px;cursor:pointer;font-size:12px;color:var(--dim)}
+  .results div:hover,.results div.sel{background:var(--panel2);color:var(--ink)}
+  .swatch{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+  /* info card */
+  #info{top:64px;right:16px;width:270px;font-size:12.5px;display:none}
+  #info.show{display:block}
+  #info h2{margin:0 0 2px;font-size:17px}
+  #info .sub{font-family:var(--mono);font-size:11px;color:var(--dim);margin-bottom:10px}
+  #info .stats{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12px}
+  #info .stats dt{color:var(--dim)}
+  #info .stats dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+  #info .planets{margin-top:10px;font-size:11.5px;color:var(--dim)}
+  #info .planets b{color:var(--warm)}
+  #info .note{margin-top:10px;font-size:11.5px;line-height:1.45;color:#c3caea}
+  #info .close{position:absolute;top:10px;right:12px;border:none;background:none;color:var(--dim);font-size:16px;padding:0;cursor:pointer}
+
+  #legend{bottom:16px;left:16px;font-size:11px;color:var(--dim);max-width:230px}
+  #legend .sp{display:inline-flex;align-items:center;margin:0 9px 4px 0;font-family:var(--mono)}
+  #hint{position:fixed;bottom:16px;right:16px;z-index:10;font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.6}
+  a{color:var(--accent)}
+  .cnt{color:var(--accent)}
+</style>
+</head>
+<body>
+<div id="app"><canvas id="c"></canvas></div>
+
+<div class="brand">
+  <h1>Proxima</h1>
+  <p>the Sun's stellar neighbourhood · <span class="cnt" id="count">—</span> objects within 5 pc</p>
+</div>
+
+<div id="controls" class="panel">
+  <div class="grp">
+    <label class="hd">Find a star</label>
+    <input id="search" type="search" placeholder="Sirius, Barnard, Tau Ceti…" autocomplete="off" />
+    <div class="results" id="results"></div>
+  </div>
+  <div class="grp">
+    <label class="hd">Show</label>
+    <div class="row">
+      <button id="t-labels" class="on">labels</button>
+      <button id="t-shells" class="on">distance rings</button>
+      <button id="t-galaxy" class="on">galaxy</button>
+      <button id="t-planets">planet-hosts</button>
+    </div>
+  </div>
+  <div class="grp">
+    <label class="hd">Filter</label>
+    <div class="row">
+      <button id="f-all" class="on">all</button>
+      <button id="f-planets">has planets</button>
+      <button id="f-bright">bright</button>
+    </div>
+  </div>
+</div>
+
+<div id="info" class="panel">
+  <button class="close" id="info-close">×</button>
+  <h2 id="i-name">—</h2>
+  <div class="sub" id="i-sub">—</div>
+  <dl class="stats" id="i-stats"></dl>
+  <div class="planets" id="i-planets"></div>
+  <div class="note" id="i-note"></div>
+</div>
+
+<div id="legend" class="panel">
+  <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);margin-bottom:6px">Spectral colour</div>
+  <span class="sp"><span class="swatch" style="background:#aabfff"></span>A/B</span>
+  <span class="sp"><span class="swatch" style="background:#fff4ea"></span>F</span>
+  <span class="sp"><span class="swatch" style="background:#fff2a1"></span>G</span>
+  <span class="sp"><span class="swatch" style="background:#ffcc6f"></span>K</span>
+  <span class="sp"><span class="swatch" style="background:#ff7b4d"></span>M</span>
+  <span class="sp"><span class="swatch" style="background:#c1440e"></span>L/T/Y</span>
+  <span class="sp"><span class="swatch" style="background:#dfe9ff"></span>white dwarf</span>
+</div>
+
+<div id="hint">drag: orbit · scroll: zoom · click a star for stats<br/>toward <span style="color:var(--warm)">◎ galactic centre</span> · grid = 5 ly</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="proxima.js"></script>
+</body>
+</html>
