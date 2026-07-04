@@ -306,6 +306,84 @@ star(name="40 Eridani C", other="", ra=(4,15,16.3), dec=(-1,7,39,10),
      dist_ly=16.333, spectral="M4.5V", mass=0.20, radius=0.23, planets=0,
      planet_names=[], discovered=1783, system="40 Eridani", note="Red-dwarf flare star.")
 
+# --- kinematics: proper motion + radial velocity ---------------------------
+# Per object: (mu_RA*  [mas/yr, incl. cos-dec],  mu_Dec [mas/yr],  RV [km/s]).
+# RV negative = approaching. Values from standard Hipparcos/Gaia-era literature.
+# Companions inherit their primary's space motion. Where a value is genuinely
+# uncertain (some ultracool dwarfs), RV defaults to 0 — it only affects how the
+# line-of-sight distance evolves, not the on-sky streak.
+KINEMATICS = {
+    "Sun": (0, 0, 0),
+    "Proxima Centauri": (-3781, 770, -22.4),
+    "Rigil Kentaurus": (-3608, 686, -22.3),
+    "Toliman": (-3608, 686, -22.3),
+    "Barnard's Star": (-799, 10337, -110.5),
+    "Luhman 16 A": (-2762, 358, 0),
+    "Luhman 16 B": (-2762, 358, 0),
+    "WISE 0855-0714": (-8117, 668, 0),
+    "Wolf 359": (-3866, -2699, 19),
+    "Lalande 21185": (-580, -4772, -85),
+    "Sirius A": (-546, -1223, -5.5),
+    "Sirius B": (-546, -1223, -5.5),
+    "Gliese 65 A": (1972, -1523, 29),
+    "Gliese 65 B": (1972, -1523, 29),
+    "Ross 154": (637, -192, -4),
+    "Ross 248": (112, -1592, -78),
+    "Epsilon Eridani": (-975, 20, 15.5),
+    "Lacaille 9352": (6767, 1327, 9.7),
+    "Ross 128": (605, -1219, -31),
+    "EZ Aquarii A": (-2097, -2493, 0),
+    "61 Cygni A": (4133, 3202, -64.5),
+    "61 Cygni B": (4107, 3144, -64),
+    "Procyon A": (-716, -1035, -3.2),
+    "Procyon B": (-716, -1035, -3.2),
+    "Struve 2398 A": (-1330, 1840, 0),
+    "Struve 2398 B": (-1400, 1850, 1),
+    "Groombridge 34 A": (2889, 411, 12),
+    "Groombridge 34 B": (2889, 411, 12),
+    "DX Cancri": (-1118, -1204, 0),
+    "Epsilon Indi A": (3967, -2537, -40),
+    "Tau Ceti": (-1721, 854, -17),
+    "GJ 1061": (745, -372, -20),
+    "YZ Ceti": (1205, 1329, 28),
+    "Luyten's Star": (571, -3694, 18),
+    "Teegarden's Star": (3429, -3805, 68),
+    "Kapteyn's Star": (6491, -5709, 245),
+    "Lacaille 8760": (-3259, -1147, 21),
+    "Kruger 60 A": (-870, -471, -34),
+    "Kruger 60 B": (-870, -471, -34),
+    "Wolf 1061": (-1129, -1074, -20),
+    "Van Maanen's Star": (1236, -2709, 54),
+    "Gliese 1": (5634, -2337, 24),
+    "TZ Arietis": (1006, -1685, 34),
+    "Gliese 674": (572, -880, -3),
+    "Gliese 687": (-320, -1352, -29),
+    "GJ 1245 A": (268, -1637, 5),
+    "Gliese 876": (960, -675, -1.5),
+    "Gliese 832": (-818, -1903, 13),
+    "40 Eridani A": (-2240, -3420, -42),
+    "40 Eridani B": (-2240, -3420, -42),
+    "40 Eridani C": (-2240, -3420, -42),
+}
+
+K_VT = 4.740470          # km/s per (arcsec/yr · pc)
+LY_PER_KMS_YR = 3.335641e-6   # 1 km/s sustained for 1 yr, expressed in light-years
+
+def velocity_ly_per_yr(ra_deg, dec_deg, dist_pc, pm_ra_mas, pm_dec_mas, rv_kms):
+    """Heliocentric space velocity -> (vx,vy,vz) in ly/yr, equatorial frame."""
+    ra, dec = math.radians(ra_deg), math.radians(dec_deg)
+    v_ra = K_VT * (pm_ra_mas / 1000.0) * dist_pc   # km/s, toward increasing RA
+    v_dec = K_VT * (pm_dec_mas / 1000.0) * dist_pc  # km/s, toward increasing Dec
+    v_r = rv_kms                                    # km/s, along line of sight
+    r_hat = (math.cos(dec)*math.cos(ra), math.cos(dec)*math.sin(ra), math.sin(dec))
+    a_hat = (-math.sin(ra), math.cos(ra), 0.0)
+    d_hat = (-math.sin(dec)*math.cos(ra), -math.sin(dec)*math.sin(ra), math.cos(dec))
+    vx = v_r*r_hat[0] + v_ra*a_hat[0] + v_dec*d_hat[0]
+    vy = v_r*r_hat[1] + v_ra*a_hat[1] + v_dec*d_hat[1]
+    vz = v_r*r_hat[2] + v_ra*a_hat[2] + v_dec*d_hat[2]
+    f = LY_PER_KMS_YR
+    return vx*f, vy*f, vz*f
+
 # --- build output ----------------------------------------------------------
 
 def process():
@@ -324,6 +402,10 @@ def process():
             x += 0.035 * math.cos(ang)
             y += 0.035 * math.sin(ang)
             z += 0.02 * n
+        pm_ra, pm_dec, rv = KINEMATICS.get(s["name"], (0, 0, 0))
+        vx, vy, vz = velocity_ly_per_yr(ra_deg, dec_deg, s["dist_ly"] / 3.26156,
+                                        pm_ra, pm_dec, rv)
+        pm_total = round(math.hypot(pm_ra, pm_dec), 1)
         out.append({
             "name": s["name"],
             "other": s["other"],
@@ -341,7 +423,9 @@ def process():
             "planet_names": s["planet_names"],
             "discovered": s["discovered"],
             "note": s["note"],
+            "pm": pm_total, "rv": rv,
             "x": round(x, 4), "y": round(y, 4), "z": round(z, 4),
+            "vx": round(vx, 10), "vy": round(vy, 10), "vz": round(vz, 10),
         })
     return out
 

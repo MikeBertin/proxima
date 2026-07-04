@@ -58,13 +58,18 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 | # | Milestone | State |
 |---|-----------|-------|
 | 1 | 3D neighbourhood: real positions, per-star stats, galaxy plane + GC, search / filters / deep-links | ✅ 2026-07-04 |
-| 2 | Polish: OG image, mobile pass, per-star "planets" mini-view, proper-motion "in N,000 years" scrub | — |
-| 3 | Deploy to GitHub Pages (public repo, sister to Orrery) — *pending decision* | — |
+| 2 | **Proper-motion time-scrub** (±80,000 yr, real space velocities, live nearest-star readout, motion trails) | ✅ 2026-07-04 |
+| 3 | Polish: OG image, mobile pass, per-star "planets" mini-view | — |
+| 4 | Deploy to GitHub Pages (public repo, sister to Orrery) — *pending decision* | — |
 
 ## Controls
 
 - **drag** orbit · **scroll** zoom · **click** a star for its stat card
-- **Show**: labels · distance rings · galaxy · planet-hosts (highlights the 23 hosts)
+- **Time-scrub**: drag the slider (±80,000 yr) or hit play to watch the neighbourhood
+  rearrange under real proper motion — the "nearest star" readout updates live, and
+  **motion trails** show each star's path. Watch **Ross 248** slide in to become our
+  nearest neighbour ~36,000 years from now.
+- **Show**: labels · distance rings · galaxy · planet-hosts (highlights the 23 hosts) · motion trails
 - **Filter**: all · has planets · bright (spectral O–K)
 - **Find a star**: type a name / catalogue designation
 

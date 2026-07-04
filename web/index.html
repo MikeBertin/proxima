@@ -55,6 +55,20 @@
   #info .note{margin-top:10px;font-size:11.5px;line-height:1.45;color:#c3caea}
   #info .close{position:absolute;top:10px;right:12px;border:none;background:none;color:var(--dim);font-size:16px;padding:0;cursor:pointer}
 
+  /* time-scrub */
+  #time{left:50%;bottom:16px;transform:translateX(-50%);width:min(560px,86vw);z-index:11}
+  #time .top{display:flex;align-items:center;gap:12px;margin-bottom:9px}
+  #time .yr{font-family:var(--mono);font-size:15px;min-width:118px}
+  #time .yr b{color:var(--accent);font-size:16px}
+  #time .near{flex:1;text-align:right;font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+  #time .near b{color:var(--warm)}
+  #time .scrub{display:flex;align-items:center;gap:9px}
+  #time input[type=range]{flex:1;-webkit-appearance:none;height:4px;border-radius:2px;
+    background:#2a3252;outline:none}
+  #time input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;
+    border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 0 3px rgba(124,196,255,.35)}
+  #time .ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:#5a638c;margin-top:4px}
+  #time button{padding:5px 9px}
   #legend{bottom:16px;left:16px;font-size:11px;color:var(--dim);max-width:230px}
   #legend .sp{display:inline-flex;align-items:center;margin:0 9px 4px 0;font-family:var(--mono)}
   #hint{position:fixed;bottom:16px;right:16px;z-index:10;font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.6}
@@ -83,6 +97,7 @@
       <button id="t-shells" class="on">distance rings</button>
       <button id="t-galaxy" class="on">galaxy</button>
       <button id="t-planets">planet-hosts</button>
+      <button id="t-paths">motion trails</button>
     </div>
   </div>
   <div class="grp">
@@ -102,6 +117,19 @@
   <dl class="stats" id="i-stats"></dl>
   <div class="planets" id="i-planets"></div>
   <div class="note" id="i-note"></div>
+</div>
+
+<div id="time" class="panel">
+  <div class="top">
+    <div class="yr">t = <b id="t-year">now</b></div>
+    <div class="near" id="t-near">nearest: Proxima Centauri · 4.25 ly</div>
+  </div>
+  <div class="scrub">
+    <button id="t-play" title="play / pause">▶</button>
+    <input id="t-slider" type="range" min="-80000" max="80000" step="500" value="0" />
+    <button id="t-reset" title="back to now">⟲</button>
+  </div>
+  <div class="ticks"><span>−80,000 yr</span><span>now</span><span>+80,000 yr</span></div>
 </div>
 
 <div id="legend" class="panel">

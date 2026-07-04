@@ -80,7 +80,7 @@ const isBright = (s) => "OBAFGK".includes((s.spectral[0] || "").toUpperCase());
 let META = null;
 const objects = [];   // { data, sprite, label, pos }
 let selected = null;
-const state = { labels: true, shells: true, galaxy: true, hosts: false, filter: "all" };
+const state = { labels: true, shells: true, galaxy: true, hosts: false, paths: false, filter: "all" };
 
 // --- load & build ----------------------------------------------------------
 fetch("data/stars.json").then(r => r.json()).then(build);
@@ -121,10 +121,18 @@ function build(payload) {
       scene.add(label);
     }
 
-    const o = { data: s, sprite, label, pos };
+    // pos0 = position "now"; vel = ly/yr in three-space (same swizzle as V()).
+    const o = {
+      data: s, sprite, label, pos: pos.clone(),
+      pos0: pos.clone(),
+      vel: new THREE.Vector3(s.vx * LY, s.vz * LY, -s.vy * LY),
+      trail: null,
+    };
     sprite.userData.obj = o;
     objects.push(o);
   }
+
+  buildTrails();
 
   // Sun gets a subtle crosshair ring so the origin reads clearly.
   const sun = objects.find(o => o.data.name === "Sun");
@@ -139,11 +147,90 @@ function build(payload) {
 
   buildSelectionRing();
   buildResults(payload.stars);
+  initTimeUI();
   applyFilter();
+  setTime(0);
   fromHash();
   animate();
 }
 let sunRing = null;
+
+// --- time-scrub: proper motion --------------------------------------------
+// Positions are linear in time (pos0 + vel·t), valid across the ±80,000 yr
+// range; beyond that the straight-line approximation drifts from reality.
+const T_MIN = -80000, T_MAX = 80000;
+let TIME = 0;
+let trailGroup;
+
+function buildTrails() {
+  trailGroup = new THREE.Group();
+  for (const o of objects) {
+    if (o.data.name === "Sun") continue;
+    if (o.vel.lengthSq() === 0) continue;
+    const a = o.pos0.clone().addScaledVector(o.vel, T_MIN);
+    const b = o.pos0.clone().addScaledVector(o.vel, T_MAX);
+    const g = new THREE.BufferGeometry().setFromPoints([a, b]);
+    const line = new THREE.Line(g, new THREE.LineBasicMaterial(
+      { color: new THREE.Color(o.data.colour), transparent: true, opacity: 0.28 }));
+    o.trail = line;
+    trailGroup.add(line);
+  }
+  trailGroup.visible = false;
+  scene.add(trailGroup);
+}
+
+function fmtYear(t) {
+  if (t === 0) return "now";
+  const s = t < 0 ? "−" : "+";
+  return s + Math.abs(t).toLocaleString("en-US") + " yr";
+}
+
+function setTime(t) {
+  TIME = t;
+  let bestName = null, bestD = Infinity;
+  for (const o of objects) {
+    o.pos.copy(o.pos0).addScaledVector(o.vel, t);
+    o.sprite.position.copy(o.pos);
+    if (o.label) o.label.position.copy(o.pos);
+    if (o.data.name !== "Sun" && o.visible !== false) {
+      const d = o.pos.length();
+      if (d < bestD) { bestD = d; bestName = o.data.name; }
+    }
+  }
+  document.getElementById("t-year").textContent = fmtYear(t);
+  if (bestName)
+    document.getElementById("t-near").innerHTML =
+      `nearest: <b>${bestName}</b> · ${bestD.toFixed(2)} ly`;
+  // keep the selected star's live distance current
+  if (selected) {
+    const dd = document.querySelector("#i-stats dd");
+    if (dd && selected.data.name !== "Sun") {
+      const d = selected.pos.length();
+      dd.textContent = `${d.toFixed(2)} ly · ${(d / 3.26156).toFixed(2)} pc`;
+    }
+    controls.target.copy(selected.pos);   // recentre so the motion stays framed
+  }
+}
+
+let playing = false;
+function initTimeUI() {
+  const slider = document.getElementById("t-slider");
+  slider.addEventListener("input", () => { stopPlay(); setTime(+slider.value); });
+  document.getElementById("t-reset").onclick = () => {
+    stopPlay(); slider.value = 0; setTime(0);
+  };
+  document.getElementById("t-play").onclick = () => playing ? stopPlay() : startPlay();
+}
+function startPlay() {
+  playing = true;
+  document.getElementById("t-play").textContent = "❚❚";
+  document.getElementById("t-play").classList.add("on");
+}
+function stopPlay() {
+  playing = false;
+  document.getElementById("t-play").textContent = "▶";
+  document.getElementById("t-play").classList.remove("on");
+}
 
 // --- distance shells (concentric rings on the equatorial plane) ------------
 let shellGroup;
@@ -370,6 +457,7 @@ bindToggle("t-labels", "labels", () => applyFilter());
 bindToggle("t-shells", "shells", () => shellGroup.visible = state.shells);
 bindToggle("t-galaxy", "galaxy", () => galaxyGroup.visible = state.galaxy);
 bindToggle("t-planets", "hosts", () => applyFilter());
+bindToggle("t-paths", "paths", () => applyFilter());
 
 for (const [id, f] of [["f-all","all"],["f-planets","planets"],["f-bright","bright"]]) {
   document.getElementById(id).onclick = () => {
@@ -396,7 +484,9 @@ function applyFilter() {
     o.sprite.material.color.set(host ? "#ffe6a6" : o.data.colour);
     if (o.label) o.label.element.style.display =
       (state.labels && pass) ? "" : "none";
+    if (o.trail) o.trail.visible = state.paths && pass;
   }
+  if (trailGroup) trailGroup.visible = state.paths;
 }
 
 // --- hash deep-link --------------------------------------------------------
@@ -423,6 +513,14 @@ let t = 0;
 function animate() {
   requestAnimationFrame(animate);
   t += 0.016;
+
+  // advance the time-scrub while playing (~1,200 yr per frame, loops)
+  if (playing) {
+    let nt = TIME + 1200;
+    if (nt > T_MAX) { nt = T_MIN; }
+    document.getElementById("t-slider").value = nt;
+    setTime(nt);
+  }
 
   // ease camera toward a focused star
   if (camTarget && focusTarget) {

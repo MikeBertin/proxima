@@ -6,6 +6,27 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-04 — Proper-motion time-scrub
+
+Turned the static map into a moving one. Added per-object **proper motion**
+(μ_RA*, μ_Dec, mas/yr) + **radial velocity** (km/s) to `KINEMATICS` in the
+builder, from standard Hipparcos/Gaia-era literature (companions inherit the
+primary's motion; a couple of ultracool-dwarf RVs default to 0). The builder
+converts μ + RV + distance into a real heliocentric **3D space-velocity vector**
+(`velocity_ly_per_yr`, using v_t = 4.74·μ·d and the RA/Dec/line-of-sight basis)
+and writes `vx,vy,vz` in ly/yr to the JSON, alongside `pm` and `rv` for display.
+
+Viewer: positions are now `pos0 + vel·t`. A bottom scrubber spans **±80,000 yr**
+with play/pause + reset, a live **"nearest star"** readout, and a **motion-trails**
+toggle (straight lines, since propagation is linear). The selected star's stat
+card updates its distance live and the camera recentres on it as it drifts.
+
+Sanity-checked against the literature and it lands on the real numbers: nearest
+star is Proxima now → **Alpha Cen/Proxima closest ~3.10 ly at +28,000 yr** →
+**Ross 248 takes over as our nearest neighbour at +36,000 yr (3.02 ly)** →
+Kruger 60 later; Barnard's Star streaks fastest and closes to ~3.76 ly. Verified
+in browser (no errors; scrub, trails, readout, play all working).
+
 ## 2026-07-04 — Project created + M1 built & verified
 
 **Concept.** A sister to Orrery: instead of zooming into the solar system, zoom
