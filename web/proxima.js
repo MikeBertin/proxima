@@ -150,6 +150,7 @@ function build(payload) {
   initTimeUI();
   applyFilter();
   setTime(0);
+  setView("galactic");   // start already oriented to the galactic plane
   fromHash();
   animate();
 }
@@ -458,6 +459,42 @@ bindToggle("t-shells", "shells", () => shellGroup.visible = state.shells);
 bindToggle("t-galaxy", "galaxy", () => galaxyGroup.visible = state.galaxy);
 bindToggle("t-planets", "hosts", () => applyFilter());
 bindToggle("t-paths", "paths", () => applyFilter());
+
+// --- orientation: equatorial vs. galactic-plane view -----------------------
+// Everything is stored in equatorial coordinates, so the galactic plane is
+// tilted ~62°. Galactic view aligns the camera's up-vector with galactic north
+// (plane reads flat) and looks toward the Galactic Centre, so it sits in the
+// background. The distance rings are re-tilted into whichever plane is level.
+function setView(mode) {
+  const Y = new THREE.Vector3(0, 1, 0);
+  const D = THREE.MathUtils.clamp(camera.position.distanceTo(controls.target), 12, 120);
+  controls.target.set(0, 0, 0);
+  camTarget = focusTarget = null;   // cancel any in-progress camera fly
+  if (mode === "galactic") {
+    const up = V(META.galactic_north_pole).normalize();
+    const gc = V(META.galactic_centre).normalize();
+    camera.up.copy(up);
+    if (shellGroup) shellGroup.quaternion.setFromUnitVectors(Y, up);
+    const e = THREE.MathUtils.degToRad(18);   // look slightly down onto the plane
+    camera.position.copy(gc.clone().multiplyScalar(-D * Math.cos(e))
+      .add(up.clone().multiplyScalar(D * Math.sin(e))));
+  } else {
+    camera.up.set(0, 1, 0);
+    if (shellGroup) shellGroup.quaternion.identity();
+    camera.position.copy(new THREE.Vector3(0.5, 0.36, 0.79).multiplyScalar(D));
+  }
+  controls.update();
+}
+document.getElementById("v-gal").onclick = () => {
+  document.getElementById("v-gal").classList.add("on");
+  document.getElementById("v-eq").classList.remove("on");
+  setView("galactic");
+};
+document.getElementById("v-eq").onclick = () => {
+  document.getElementById("v-eq").classList.add("on");
+  document.getElementById("v-gal").classList.remove("on");
+  setView("equatorial");
+};
 
 for (const [id, f] of [["f-all","all"],["f-planets","planets"],["f-bright","bright"]]) {
   document.getElementById(id).onclick = () => {

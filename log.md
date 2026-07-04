@@ -6,6 +6,18 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-04 — Galactic-plane orientation (fixes hard-to-orient feedback)
+
+Feedback: hard to orient so the galactic plane is flat with the centre in the
+background — because everything is stored equatorial, the plane sits ~62° tilted.
+Added an **Orient** toggle: *galactic plane* (default) sets `camera.up` to the
+North Galactic Pole direction (plane reads flat), positions the camera on the
+anti-centre side looking toward the GC (so Sgr A* sits in the background), and
+re-tilts the distance rings into the galactic plane; *equatorial* restores the
+RA/Dec frame. Orbiting keeps the chosen plane level. Default is now galactic.
+World frame stays equatorial (so selection/target/velocity math is untouched);
+only the camera up-vector + ring group rotate.
+
 ## 2026-07-04 — Proper-motion time-scrub
 
 Turned the static map into a moving one. Added per-object **proper motion**

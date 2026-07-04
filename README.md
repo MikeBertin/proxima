@@ -69,6 +69,9 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
   rearrange under real proper motion — the "nearest star" readout updates live, and
   **motion trails** show each star's path. Watch **Ross 248** slide in to become our
   nearest neighbour ~36,000 years from now.
+- **Orient**: *galactic plane* (default — galactic north up, so the Milky Way reads flat
+  and the Galactic Centre sits in the background) or *equatorial* (RA/Dec frame). Orbiting
+  keeps whichever plane you chose level.
 - **Show**: labels · distance rings · galaxy · planet-hosts (highlights the 23 hosts) · motion trails
 - **Filter**: all · has planets · bright (spectral O–K)
 - **Find a star**: type a name / catalogue designation
