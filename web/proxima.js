@@ -92,7 +92,7 @@ let selected = null;
 const state = { labels: true, shells: true, galaxy: true, hosts: false, paths: false, grid3d: true, filter: "all" };
 
 // --- load & build ----------------------------------------------------------
-fetch("data/stars.json?v=2").then(r => r.json()).then(build);
+fetch("data/stars.json?v=3").then(r => r.json()).then(build);
 
 function build(payload) {
   META = payload.meta;
@@ -468,7 +468,13 @@ function showInfo(s) {
 function renderSystemStrip(s) {
   const box = document.getElementById("i-system");
   const pd = s.planet_data || [];
-  if (!pd.length) { box.innerHTML = ""; return; }
+  if (!pd.length) {
+    box.innerHTML = s.no_planet_hint
+      ? `<div class="syshead">why no planets found</div>` +
+        `<div class="sysline hint">${s.no_planet_hint}</div>`
+      : "";
+    return;
+  }
 
   const W = 244, AXY = 30, LMIN = Math.log10(0.012), LMAX = Math.log10(45);
   const X = a => 18 + (Math.log10(a) - LMIN) / (LMAX - LMIN) * (W - 26);

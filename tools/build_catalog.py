@@ -394,6 +394,41 @@ PLANETS = {
     "40 Eridani A": [("40 Eridani b", 0.215, 8.5, 2018, False, True)],
 }
 
+# --- "why none found" hints for zero-planet stars ---------------------------
+# No confirmed planet almost never means "no planets" — it means detection is
+# hard for this star. One line per star saying why (activity, binarity, stellar
+# type, or simply survey depth), shown on the info card in place of the strip.
+NO_PLANET_HINT = {
+    "Rigil Kentaurus": "Close binary — companion glare and the A–B orbit swamp small RV signals; decades of searching, candidates but no confirmation yet.",
+    "Toliman": "Close binary with Alpha Cen A — the companion's light and dynamics defeat current searches.",
+    "Luhman 16 A": "Brown dwarf — far too faint for precision radial velocity; only astrometry or microlensing could reveal planets here.",
+    "Luhman 16 B": "Brown dwarf — far too faint for precision radial velocity searches.",
+    "WISE 0855-0714": "A rogue sub-brown dwarf at ~250 K — beyond the reach of any current planet-hunting method.",
+    "Sirius A": "Hot, fast-spinning A star — few, smeared spectral lines ruin RV precision, and the white-dwarf companion adds glare.",
+    "Sirius B": "White dwarf — any inner planets were engulfed or destroyed when the progenitor swelled into a red giant.",
+    "Gliese 65 A": "Flare-star binary — constant magnetic jitter drowns the signal of any small planet.",
+    "Gliese 65 B": "The prototype flare star — activity noise overwhelms radial-velocity planet hunting.",
+    "Ross 154": "Young, active flare star — starspot jitter masks small-planet signals.",
+    "Ross 248": "Active flare star — magnetic noise sits above the signal any small planet would make.",
+    "EZ Aquarii A": "Tight flare-star triple — three-body dynamics plus activity noise defeat precision searches.",
+    "61 Cygni A": "Surveyed for two centuries — binary dynamics complicate searches and nothing has cleared the threshold; small, cool planets could easily hide.",
+    "61 Cygni B": "As with its partner: binary complications, long history of null results, room left for small planets.",
+    "Procyon A": "Hot F-type subgiant — pulsations and broadened lines limit RV precision; the white-dwarf companion adds glare.",
+    "Procyon B": "White dwarf — the inner planetary system did not survive the giant phase.",
+    "Struve 2398 A": "M-dwarf binary — activity signals so far, no confirmed planet.",
+    "Struve 2398 B": "M-dwarf binary — flare activity and the companion complicate searches.",
+    "Groombridge 34 B": "Flare star — activity noise; note its quieter primary does host a planet.",
+    "DX Cancri": "Ultracool flare star — extremely faint and magnetically noisy, barely surveyable by RV.",
+    "Kruger 60 A": "Close flare-star binary — activity plus binary dynamics hide small planets.",
+    "Kruger 60 B": "Close flare-star binary — the companion's orbit and flares defeat searches.",
+    "Lacaille 8760": "Bright but magnetically active M dwarf — flare jitter; surveys so far empty.",
+    "Gliese 1": "Quiet and well surveyed — nothing above the detection threshold yet; smaller or more distant planets could remain.",
+    "GJ 1245 A": "Flare-star triple — activity and two companions defeat precision searches.",
+    "Van Maanen's Star": "White dwarf with a metal-polluted atmosphere — forensic debris of shredded planetary material. It had planets; it ate them.",
+    "40 Eridani B": "White dwarf — close-in planets were engulfed when the progenitor became a red giant.",
+    "40 Eridani C": "Red-dwarf flare star — activity noise masks small planets; its K-dwarf primary is the promising target.",
+}
+
 # --- kinematics: proper motion + radial velocity ---------------------------
 # Per object: (mu_RA*  [mas/yr, incl. cos-dec],  mu_Dec [mas/yr],  RV [km/s]).
 # RV negative = approaching. Values from standard Hipparcos/Gaia-era literature.
@@ -494,7 +529,7 @@ def process():
         vx, vy, vz = velocity_ly_per_yr(ra_deg, dec_deg, s["dist_ly"] / 3.26156,
                                         pm_ra, pm_dec, rv)
         pm_total = round(math.hypot(pm_ra, pm_dec), 1)
-        out.append({
+        entry = ({
             "name": s["name"],
             "other": s["other"],
             "system": s["system"],
@@ -519,6 +554,14 @@ def process():
             "x": round(x, 4), "y": round(y, 4), "z": round(z, 4),
             "vx": round(vx, 10), "vy": round(vy, 10), "vz": round(vz, 10),
         })
+        if not entry["planet_data"] and s["name"] in NO_PLANET_HINT:
+            entry["no_planet_hint"] = NO_PLANET_HINT[s["name"]]
+        out.append(entry)
+    # every zero-planet star (bar the Sun) should carry a hint
+    missing = [e["name"] for e in out
+               if not e["planet_data"] and "no_planet_hint" not in e and e["name"] != "Sun"]
+    if missing:
+        print("WARNING: zero-planet stars without a hint:", missing)
     return out
 
 def dir_vector(ra_deg, dec_deg):

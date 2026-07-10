@@ -70,6 +70,9 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
   planet plotted on a log-AU axis — dot size = mass class (rocky/Neptune/Jovian by
   colour), green ring = temperate orbit, dashed = disputed. Tap a dot for distance,
   mass and discovery year.
+- **"Why no planets found"** — every zero-planet star explains its own gap (flare-star
+  noise, binary glare, hot-star spectra, white-dwarf history, or plain survey depth),
+  because no confirmed planet almost never means no planets.
 - **Time-scrub**: drag the slider (±80,000 yr) or hit play to watch the neighbourhood
   rearrange under real proper motion — the "nearest star" readout updates live, and
   **motion trails** show each star's path. Watch **Ross 248** slide in to become our

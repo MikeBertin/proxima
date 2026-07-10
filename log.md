@@ -6,6 +6,18 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-10 — "Why no planets found" hints
+
+Follow-up to the mini-view, from the owner asking "why don't they all have
+planets?" — answer: detection bias, not absence. Added `NO_PLANET_HINT` to the
+builder: one line per zero-planet star explaining its own gap (flare-star
+jitter, binary glare/dynamics, hot-star spectra, white-dwarf history, brown
+dwarfs too faint, or simply survey depth). A coverage check in `process()`
+warns if any zero-planet star lacks a hint — it immediately caught 40 Eri B/C.
+All 28/28 covered. The info card shows the hint under a "why no planets found"
+header in place of the system strip. Best one: Van Maanen's Star — "It had
+planets; it ate them." Cache-bust bumped to ?v=3.
+
 ## 2026-07-10 — Planets mini-view (log-AU system strips)
 
 Enriched the catalogue with **per-planet detail** for all 52 planets across the
