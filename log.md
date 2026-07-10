@@ -6,6 +6,14 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-10 — Data refresh: Barnard's Star × 4
+
+First post-ship data refresh. The March 2025 MAROON-X + ESPRESSO confirmation
+(Basant et al., ApJL) upgraded Barnard's Star from one planet to **four
+confirmed sub-Earths** — d/b/c/e at 0.0188/0.0229/0.0274/0.0381 AU, minimum
+masses 0.26/0.30/0.34/0.19 M⊕, all inside a 7-day orbit. Catalogue total now
+55 planets. Verified locally and on the live site; ?v=4.
+
 ## 2026-07-10 — SHIPPED: public repo + GitHub Pages
 
 Published per the Orrery route: public repo **github.com/MikeBertin/proxima**,
