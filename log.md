@@ -6,6 +6,20 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-10 — SHIPPED: public repo + GitHub Pages
+
+Published per the Orrery route: public repo **github.com/MikeBertin/proxima**,
+Pages deploying `web/` via `.github/workflows/pages.yml` (copied from Orrery),
+Pages source set to GitHub Actions via `gh api ... -f build_type=workflow`.
+Gotcha: the on-push workflow run fired *before* Pages was enabled and failed —
+expected race; a manual `gh workflow run pages.yml` after enabling succeeded.
+README got the conventions treatment: "Why Proxima" section, live links
+(including the Tau Ceti deep-link), HANDOVER.md gitignored pre-emptively.
+
+**Live and verified at https://mikebertin.github.io/proxima/** — site 200,
+og.jpg 200, stars.json serving 51 stars / 52 planets / 28 hints, full scene
+render checked headlessly. Project complete, M1–M5 all shipped in 6 days.
+
 ## 2026-07-10 — "Why no planets found" hints
 
 Follow-up to the mini-view, from the owner asking "why don't they all have

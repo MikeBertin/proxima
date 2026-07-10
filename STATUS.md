@@ -1,10 +1,10 @@
 # STATUS — Project Proxima
 
-State: 🟢 M1–M4 BUILT & VERIFIED (map + scrub + polish + planets mini-view)
-Last action: 2026-07-10 — M4 planets mini-view (log-AU system strips, all 52 planets enriched) + "why no planets found" hints on all 28 zero-planet stars (detection-bias one-liners: flare noise / binary glare / hot-star spectra / white-dwarf history / survey depth; builder coverage-checked). Cache-bust at ?v=3. Verified headlessly.
-Next action: Publish decision — public repo + GitHub Pages, sister to Orrery.
+State: 🚀 SHIPPED — LIVE at mikebertin.github.io/proxima
+Last action: 2026-07-10 — M5 publish: public repo github.com/MikeBertin/proxima, Pages via .github/workflows/pages.yml (web/ folder, build_type=workflow). Live site verified: 51 stars, 52 planets, 28 hints served; full render checked headlessly. README got "Why Proxima" + live links per public-repo conventions.
+Next action: None — project complete. (Optional future: candidate-planet refresh as new discoveries land; bump ?v= on any js/json change.)
 Blocked by: Nothing.
-Next milestone: M5 publish decision.
+Next milestone: —
 Outcome: Working local 3D map of the Sun's stellar neighbourhood, real astrometry, sister to Orrery.
 Notes:
 - Local repo only for now (own git repo, no remote). Publishing to GitHub Pages deferred (M3) — same route as Orrery when ready.
