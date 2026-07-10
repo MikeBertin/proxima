@@ -2,10 +2,22 @@
 
 > *A live, interactive map of every star within five parsecs of the Sun — where they are, what they're made of, and which ones have planets.*
 
-Sister project to **Orrery** (the solar system in 3D). Where Orrery zooms *into*
-our system, Proxima zooms *out* to the ~50 nearest stellar objects, plotted from
-real astrometry, with the Milky Way plane and Galactic Centre for orientation.
-Vanilla JavaScript + Three.js; ships as a static site.
+Sister project to [Orrery](https://mikebertin.github.io/orrery/) (the solar system
+in 3D). Where Orrery zooms *into* our system, Proxima zooms *out* to the ~50
+nearest stellar objects, plotted from real astrometry, with the Milky Way plane
+and Galactic Centre for orientation. Vanilla JavaScript + Three.js; ships as a
+static site.
+
+**▶ Live: [mikebertin.github.io/proxima](https://mikebertin.github.io/proxima/)** —
+try [Tau Ceti's four planets](https://mikebertin.github.io/proxima/#Tau%20Ceti)
+or scrub 36,000 years forward and watch Ross 248 become our nearest neighbour.
+
+## Why "Proxima"
+
+*Proxima* is Latin for "nearest" — and Proxima Centauri is exactly that: the
+single nearest star to the Sun, a red dwarf 4.25 light-years away hiding a
+temperate rocky planet. A map of the Sun's nearest neighbours could hardly be
+called anything else.
 
 ## What This Is
 
@@ -61,7 +73,7 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 | 2 | **Proper-motion time-scrub** (±80,000 yr, real space velocities, live nearest-star readout, motion trails) | ✅ 2026-07-04 |
 | 3 | Polish: OG image, mobile pass, soft 3D grid, trail direction arrows | ✅ 2026-07-10 |
 | 4 | Per-star "planets" mini-view (log-AU system strips, all 52 planets enriched) | ✅ 2026-07-10 |
-| 5 | Deploy to GitHub Pages (public repo, sister to Orrery) — *pending decision* | — |
+| 5 | Deploy to GitHub Pages (public repo, sister to Orrery) | ✅ 2026-07-10 |
 
 ## Controls
 
@@ -93,6 +105,6 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 - Star *display* sizes are scaled for legibility, not to true physical scale — at real
   scale every star would be an invisible point. Relative sizing (dwarf vs. giant vs.
   white dwarf) is preserved.
-- Local repo only for now; publishing decision deferred (see STATUS).
+- Deploys to GitHub Pages via `.github/workflows/pages.yml` (serves the `web/` folder).
 
 > *Any quotes used in this project must be real, sourced attributions. No invented quotes.*
