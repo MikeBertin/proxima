@@ -6,6 +6,34 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-10 — OG image, mobile pass, 3D grid, trail arrows
+
+**OG/social card.** Orrery-style meta tags (og:/twitter:, image URLs pre-pointed
+at the future Pages home). `?og` URL param = clean-capture mode (UI hidden,
+wordmark enlarged, trails on). Captured headlessly at 1200×630 → `web/og.jpg`.
+Headless gotchas learned: `--disable-gpu` kills WebGL context creation → the
+whole ES module dies (use `--use-angle=swiftshader --enable-unsafe-swiftshader`);
+headless Chrome enforces a ~500px minimum window width, so "375px" screenshots
+are actually 500px layouts clipped — the missing mobile toggle chip was a
+capture artefact, not a bug (proved via a temporary ?debug DOM probe).
+
+**Mobile pass.** ≤640px: controls collapse behind a ☰ chip (slide-in sheet,
+auto-closes on star select), info card becomes a full-width sheet, time bar goes
+full-width, legend/hint hidden, bigger touch targets. Mid widths (≤1120px): the
+centred time bar used to overlap the corner panels — now docks between the
+legend and the right edge; hint hides earlier.
+
+**Soft 3D grid** (user request): light-grey semi-transparent lattice
+(5-ly spacing over ±15 ly) with brighter axes through the Sun at the origin;
+own toggle (default on); re-orients with the galactic/equatorial view. First
+pass was too dark against the background — brightened to #aab3d0 @ 0.22.
+
+**Trail arrows** (user request): each motion trail now ends in a colour-matched
+cone at the +80,000 yr end, marking the star's direction of travel.
+
+Verified headlessly at 1400/1000/500px widths: grid legible, no panel overlap,
+chip toggles the sheet (`controls: none → block`), arrows render.
+
 ## 2026-07-04 — Galactic-plane orientation (fixes hard-to-orient feedback)
 
 Feedback: hard to orient so the galactic plane is flat with the centre in the

@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Proxima — the Sun's stellar neighbourhood in 3D</title>
 <meta name="description" content="An interactive 3D map of every star within ~5 parsecs of the Sun: mass, colour, size, distance, planets and more." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mikebertin.github.io/proxima/" />
+<meta property="og:title" content="Proxima — the Sun's stellar neighbourhood in 3D" />
+<meta property="og:description" content="Every star within 5 parsecs of the Sun, mapped in real 3D. Scrub ±80,000 years of proper motion and watch Ross 248 become our nearest neighbour." />
+<meta property="og:image" content="https://mikebertin.github.io/proxima/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://mikebertin.github.io/proxima/og.jpg" />
 <style>
   :root{
     --bg:#07080f; --ink:#e7ecff; --dim:#9aa3c7; --line:#232a44;
@@ -74,6 +83,44 @@
   #hint{position:fixed;bottom:16px;right:16px;z-index:10;font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.6}
   a{color:var(--accent)}
   .cnt{color:var(--accent)}
+
+  /* mobile toggle chip (hidden on desktop) */
+  #panel-toggle{display:none;position:fixed;top:14px;right:14px;z-index:12;
+    font-size:13px;padding:7px 11px;border-radius:9px}
+
+  /* --- mobile pass ------------------------------------------------------- */
+  /* mid widths: time bar would collide with the corner panels — hide the hint
+     and dock the bar between the legend and the right edge instead of centring */
+  @media (max-width:1120px){
+    #hint{display:none}
+    #time{left:288px;right:16px;width:auto;transform:none}
+  }
+  @media (max-width:640px){
+    .brand h1{font-size:16px}
+    .brand p{font-size:9.5px}
+    #legend{display:none}
+    #panel-toggle{display:block}
+    /* controls become a slide-in sheet, hidden until toggled */
+    #controls{display:none;top:56px;left:10px;right:10px;width:auto;
+      max-height:min(62vh,430px);overflow:auto}
+    body.panel-open #controls{display:block}
+    .results{max-height:130px}
+    /* info card: full-width sheet under the header */
+    #info{top:56px;left:10px;right:10px;width:auto;max-height:52vh;overflow:auto}
+    /* time-scrub: full-width, compact (legend is hidden at this size) */
+    #time{left:10px;right:10px;width:auto;transform:none;padding:9px 11px}
+    #time .yr{font-size:13px;min-width:96px}
+    #time .yr b{font-size:14px}
+    #time .near{font-size:10px}
+    #time .ticks{font-size:8.5px}
+    button{padding:6px 9px}   /* bigger touch targets */
+  }
+
+  /* --- OG-capture mode (?og): hide chrome, keep the map + wordmark ------- */
+  body.og .panel,body.og #hint,body.og #panel-toggle{display:none!important}
+  body.og .brand{top:22px;left:26px}
+  body.og .brand h1{font-size:34px}
+  body.og .brand p{font-size:14px;margin-top:5px}
 </style>
 </head>
 <body>
@@ -83,6 +130,8 @@
   <h1>Proxima</h1>
   <p>the Sun's stellar neighbourhood · <span class="cnt" id="count">—</span> objects within 5 pc</p>
 </div>
+
+<button id="panel-toggle" title="controls">☰</button>
 
 <div id="controls" class="panel">
   <div class="grp">
@@ -98,6 +147,7 @@
       <button id="t-galaxy" class="on">galaxy</button>
       <button id="t-planets">planet-hosts</button>
       <button id="t-paths">motion trails</button>
+      <button id="t-grid3d" class="on">3D grid</button>
     </div>
   </div>
   <div class="grp">

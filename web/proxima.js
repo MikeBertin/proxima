@@ -6,6 +6,15 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { CSS2DRenderer, CSS2DObject } from "three/addons/renderers/CSS2DRenderer.js";
 
+// ?og = clean-capture mode for the social-share image: UI hidden, trails on.
+const OG_MODE = new URLSearchParams(location.search).has("og");
+if (OG_MODE) document.body.classList.add("og");
+
+// mobile controls sheet
+const panelToggle = document.getElementById("panel-toggle");
+panelToggle.onclick = () => document.body.classList.toggle("panel-open");
+const isMobile = () => matchMedia("(max-width:640px)").matches;
+
 const LY = 1;                 // 1 light-year = 1 scene unit
 const GC_MARKER_DIST = 380;   // where we park the Galactic-Centre signpost (ly)
 const GALAXY_R = 520;         // radius of the faint Milky-Way disc (ly)
@@ -80,7 +89,7 @@ const isBright = (s) => "OBAFGK".includes((s.spectral[0] || "").toUpperCase());
 let META = null;
 const objects = [];   // { data, sprite, label, pos }
 let selected = null;
-const state = { labels: true, shells: true, galaxy: true, hosts: false, paths: false, filter: "all" };
+const state = { labels: true, shells: true, galaxy: true, hosts: false, paths: false, grid3d: true, filter: "all" };
 
 // --- load & build ----------------------------------------------------------
 fetch("data/stars.json").then(r => r.json()).then(build);
@@ -90,6 +99,7 @@ function build(payload) {
   document.getElementById("count").textContent = META.count;
 
   buildShells();
+  buildGrid3D();
   buildGalaxy();
 
   const seenSystem = new Set();
@@ -148,6 +158,7 @@ function build(payload) {
   buildSelectionRing();
   buildResults(payload.stars);
   initTimeUI();
+  if (OG_MODE) { state.paths = true; document.getElementById("t-paths").classList.add("on"); }
   applyFilter();
   setTime(0);
   setView("galactic");   // start already oriented to the galactic plane
@@ -175,6 +186,15 @@ function buildTrails() {
       { color: new THREE.Color(o.data.colour), transparent: true, opacity: 0.28 }));
     o.trail = line;
     trailGroup.add(line);
+    // arrowhead at the future end — direction of travel
+    const cone = new THREE.Mesh(
+      new THREE.ConeGeometry(0.22, 0.75, 10),
+      new THREE.MeshBasicMaterial(
+        { color: new THREE.Color(o.data.colour), transparent: true, opacity: 0.75 }));
+    cone.position.copy(b);
+    cone.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), o.vel.clone().normalize());
+    o.arrow = cone;
+    trailGroup.add(cone);
   }
   trailGroup.visible = false;
   scene.add(trailGroup);
@@ -265,6 +285,33 @@ function buildShells() {
       { color: 0x1c2340, transparent: true, opacity: 0.45 })));
   }
   scene.add(shellGroup);
+}
+
+// --- soft 3D grid lattice, Sun at the origin --------------------------------
+let grid3DGroup;
+function buildGrid3D() {
+  grid3DGroup = new THREE.Group();
+  const R = 15, STEP = 5;
+  const pts = [];
+  for (let a = -R; a <= R; a += STEP) {
+    for (let b = -R; b <= R; b += STEP) {
+      pts.push(new THREE.Vector3(-R, a, b), new THREE.Vector3(R, a, b));
+      pts.push(new THREE.Vector3(a, -R, b), new THREE.Vector3(a, R, b));
+      pts.push(new THREE.Vector3(a, b, -R), new THREE.Vector3(a, b, R));
+    }
+  }
+  const g = new THREE.BufferGeometry().setFromPoints(pts);
+  grid3DGroup.add(new THREE.LineSegments(g, new THREE.LineBasicMaterial(
+    { color: 0xaab3d0, transparent: true, opacity: 0.22 })));
+  // the three axes through the Sun read a touch brighter
+  const ax = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-R, 0, 0), new THREE.Vector3(R, 0, 0),
+    new THREE.Vector3(0, -R, 0), new THREE.Vector3(0, R, 0),
+    new THREE.Vector3(0, 0, -R), new THREE.Vector3(0, 0, R)]);
+  grid3DGroup.add(new THREE.LineSegments(ax, new THREE.LineBasicMaterial(
+    { color: 0xd5dcf2, transparent: true, opacity: 0.5 })));
+  grid3DGroup.visible = state.grid3d;
+  scene.add(grid3DGroup);
 }
 
 // --- Milky Way disc + Galactic Centre signpost -----------------------------
@@ -375,6 +422,7 @@ let camTarget = null, focusTarget = null;
 function select(o, { fly = true } = {}) {
   selected = o;
   selRing.visible = true;
+  if (isMobile()) document.body.classList.remove("panel-open"); // make way for the info sheet
   showInfo(o.data);
   markResult(o.data.name);
   location.hash = encodeURIComponent(o.data.name);
@@ -459,6 +507,7 @@ bindToggle("t-shells", "shells", () => shellGroup.visible = state.shells);
 bindToggle("t-galaxy", "galaxy", () => galaxyGroup.visible = state.galaxy);
 bindToggle("t-planets", "hosts", () => applyFilter());
 bindToggle("t-paths", "paths", () => applyFilter());
+bindToggle("t-grid3d", "grid3d", () => grid3DGroup.visible = state.grid3d);
 
 // --- orientation: equatorial vs. galactic-plane view -----------------------
 // Everything is stored in equatorial coordinates, so the galactic plane is
@@ -475,12 +524,14 @@ function setView(mode) {
     const gc = V(META.galactic_centre).normalize();
     camera.up.copy(up);
     if (shellGroup) shellGroup.quaternion.setFromUnitVectors(Y, up);
+    if (grid3DGroup) grid3DGroup.quaternion.setFromUnitVectors(Y, up);
     const e = THREE.MathUtils.degToRad(18);   // look slightly down onto the plane
     camera.position.copy(gc.clone().multiplyScalar(-D * Math.cos(e))
       .add(up.clone().multiplyScalar(D * Math.sin(e))));
   } else {
     camera.up.set(0, 1, 0);
     if (shellGroup) shellGroup.quaternion.identity();
+    if (grid3DGroup) grid3DGroup.quaternion.identity();
     camera.position.copy(new THREE.Vector3(0.5, 0.36, 0.79).multiplyScalar(D));
   }
   controls.update();
@@ -522,6 +573,7 @@ function applyFilter() {
     if (o.label) o.label.element.style.display =
       (state.labels && pass) ? "" : "none";
     if (o.trail) o.trail.visible = state.paths && pass;
+    if (o.arrow) o.arrow.visible = state.paths && pass;
   }
   if (trailGroup) trailGroup.visible = state.paths;
 }

@@ -59,8 +59,9 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 |---|-----------|-------|
 | 1 | 3D neighbourhood: real positions, per-star stats, galaxy plane + GC, search / filters / deep-links | ✅ 2026-07-04 |
 | 2 | **Proper-motion time-scrub** (±80,000 yr, real space velocities, live nearest-star readout, motion trails) | ✅ 2026-07-04 |
-| 3 | Polish: OG image, mobile pass, per-star "planets" mini-view | — |
-| 4 | Deploy to GitHub Pages (public repo, sister to Orrery) — *pending decision* | — |
+| 3 | Polish: OG image, mobile pass, soft 3D grid, trail direction arrows | ✅ 2026-07-10 |
+| 4 | Per-star "planets" mini-view | — |
+| 5 | Deploy to GitHub Pages (public repo, sister to Orrery) — *pending decision* | — |
 
 ## Controls
 
@@ -72,7 +73,9 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 - **Orient**: *galactic plane* (default — galactic north up, so the Milky Way reads flat
   and the Galactic Centre sits in the background) or *equatorial* (RA/Dec frame). Orbiting
   keeps whichever plane you chose level.
-- **Show**: labels · distance rings · galaxy · planet-hosts (highlights the 23 hosts) · motion trails
+- **Show**: labels · distance rings · galaxy · planet-hosts (highlights the 23 hosts) ·
+  motion trails (with arrowheads marking direction of travel) · 3D grid (soft light-grey
+  lattice at 5-ly spacing, Sun at the origin, oriented to the chosen frame)
 - **Filter**: all · has planets · bright (spectral O–K)
 - **Find a star**: type a name / catalogue designation
 
