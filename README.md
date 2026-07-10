@@ -3,7 +3,7 @@
 > *A live, interactive map of every star within five parsecs of the Sun — where they are, what they're made of, and which ones have planets.*
 
 Sister project to [Orrery](https://mikebertin.github.io/orrery/) (the solar system
-in 3D). Where Orrery zooms *into* our system, Proxima zooms *out* to the ~50
+in 3D). Where Orrery zooms *into* our system, Proxima zooms *out* to the ~65
 nearest stellar objects, plotted from real astrometry, with the Milky Way plane
 and Galactic Centre for orientation. Vanilla JavaScript + Three.js; ships as a
 static site.
@@ -28,9 +28,10 @@ sense of scale; a faint Milky Way disc shows the galactic plane the whole
 neighbourhood is embedded in, with a signpost pointing 26,000 ly toward the
 Galactic Centre (Sgr A*).
 
-51 objects within ~5 pc (16.4 ly): 3 Sun-like stars, dozens of red dwarfs, the
-white dwarfs Sirius B / Procyon B / Van Maanen's Star, brown dwarfs (Luhman 16,
-WISE 0855), and 23 planet-hosting systems (55 known planets) — from Proxima b to
+64 objects within ~5 pc (16.4 ly) — the complete RECONS census: 3 Sun-like
+stars, dozens of red dwarfs, four white dwarfs (Sirius B, Procyon B,
+Van Maanen's Star, Gliese 440), brown dwarfs from Luhman 16 down to ~500 K
+T dwarfs, and 25 planet-hosting systems (59 known planets) — from Proxima b to
 the four-world resonant chain of Gliese 876.
 
 ## The data
@@ -74,6 +75,7 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 | 3 | Polish: OG image, mobile pass, soft 3D grid, trail direction arrows | ✅ 2026-07-10 |
 | 4 | Per-star "planets" mini-view (log-AU system strips, every known planet enriched) | ✅ 2026-07-10 |
 | 5 | Deploy to GitHub Pages (public repo, sister to Orrery) | ✅ 2026-07-10 |
+| 6 | Census completion — full RECONS 5 pc sample (64 objects), keyboard controls, favicon | ✅ 2026-07-10 |
 
 ## Controls
 

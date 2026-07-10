@@ -6,6 +6,27 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-10 — Census completion + review fixes
+
+A review pass found the catalogue was the *well-known* 5 pc members, not the
+full census — the README overclaimed. Completed it: **+13 objects** (now 64),
+astrometry cross-checked against the Wikipedia/RECONS list — SCR 1845-6357 A/B,
+DENIS J1048-3956, UGPS J0722-0540 (~500 K T dwarf), Wolf 424 A/B, **Gliese 440**
+(4th-nearest white dwarf), LHS 288, **GJ 1002** (two temperate Earth-mass
+planets, 2022 — one of the nearest potentially habitable systems), Gliese 412
+A/B (WX UMa), AD Leonis, Gliese 682 (2 candidate planets, disputed). WISE
+1541-2250 considered and excluded — revised parallax puts it at 18.9 ly.
+Totals: 25 host systems, 59 planets, 39 hints (coverage check passed). The
+faintest objects' proper-motion components are survey-catalogue approximate;
+RV defaults 0 where unmeasured.
+
+**Bug fixed:** the "nearest:" readout honoured the active filter — under
+*bright* it would claim Rigil Kentaurus while Proxima was nearer. Now computed
+over all stars regardless of UI state (verified via debug probe).
+
+**Quick wins:** 🌟 favicon (inline SVG emoji); keyboard — Esc closes the info
+card, ←/→ nudge the time slider ±2,000 yr (Shift = ±10,000). Cache-bust ?v=5.
+
 ## 2026-07-10 — Data refresh: Barnard's Star × 4
 
 First post-ship data refresh. The March 2025 MAROON-X + ESPRESSO confirmation

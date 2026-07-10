@@ -398,6 +398,14 @@ PLANETS = {
         ("Gliese 832 b", 3.56, 216, 2008, False, False),
     ],
     "40 Eridani A": [("40 Eridani b", 0.215, 8.5, 2018, False, True)],
+    "GJ 1002": [
+        ("GJ 1002 b", 0.0457, 1.08, 2022, True, False),
+        ("GJ 1002 c", 0.0738, 1.36, 2022, True, False),
+    ],
+    "Gliese 682": [
+        ("GJ 682 b", 0.080, 4.4, 2014, False, True),
+        ("GJ 682 c", 0.176, 8.7, 2014, True, True),
+    ],
 }
 
 # --- "why none found" hints for zero-planet stars ---------------------------
@@ -433,6 +441,17 @@ NO_PLANET_HINT = {
     "Van Maanen's Star": "White dwarf with a metal-polluted atmosphere — forensic debris of shredded planetary material. It had planets; it ate them.",
     "40 Eridani B": "White dwarf — close-in planets were engulfed when the progenitor became a red giant.",
     "40 Eridani C": "Red-dwarf flare star — activity noise masks small planets; its K-dwarf primary is the promising target.",
+    "SCR 1845-6357 A": "Ultracool dwarf found only in 2004 — too faint for the precision RV surveys that find small planets.",
+    "SCR 1845-6357 B": "A T-type brown dwarf — far beyond the reach of planet searches.",
+    "DENIS J1048-3956": "Ultracool dwarf at the hydrogen-burning limit — too faint for precision RV.",
+    "UGPS J0722-0540": "A ~500 K T dwarf — no current method can search it for planets.",
+    "Wolf 424 A": "Tight flare-star binary — activity noise plus a close companion defeat searches.",
+    "Wolf 424 B": "Tight flare-star binary — same story as its partner.",
+    "Gliese 440": "White dwarf — inner planets would not have survived the red-giant phase.",
+    "LHS 288": "Faint and little surveyed — no deep RV campaign published yet.",
+    "Gliese 412 A": "Under-surveyed M dwarf with a flare-star companion complicating long campaigns.",
+    "Gliese 412 B": "WX UMa is an extreme flare star — activity noise swamps any planet signal.",
+    "AD Leonis": "One of the most active flare stars known — a claimed planet (2020) was retracted as an activity artefact.",
 }
 
 # --- kinematics: proper motion + radial velocity ---------------------------
@@ -493,6 +512,21 @@ KINEMATICS = {
     "40 Eridani A": (-2240, -3420, -42),
     "40 Eridani B": (-2240, -3420, -42),
     "40 Eridani C": (-2240, -3420, -42),
+    # census-completion tail; components for the faintest objects are from
+    # survey catalogues and carry larger uncertainties than the rest
+    "SCR 1845-6357 A": (2564, 674, 0),
+    "SCR 1845-6357 B": (2564, 674, 0),
+    "DENIS J1048-3956": (-1178, -986, 0),
+    "UGPS J0722-0540": (-905, 355, 0),
+    "Wolf 424 A": (-1750, -300, -5),
+    "Wolf 424 B": (-1750, -300, -5),
+    "Gliese 440": (2661, -345, 0),
+    "LHS 288": (-1004, -1322, 0),
+    "GJ 1002": (-811, -1893, -34),
+    "Gliese 412 A": (-4410, 943, 69),
+    "Gliese 412 B": (-4339, 954, 69),
+    "AD Leonis": (-502, -46, 12.7),
+    "Gliese 682": (-708, -938, 0),
 }
 
 K_VT = 4.740470          # km/s per (arcsec/yr · pc)
@@ -512,6 +546,73 @@ def velocity_ly_per_yr(ra_deg, dec_deg, dist_pc, pm_ra_mas, pm_dec_mas, rv_kms):
     vz = v_r*r_hat[2] + v_ra*a_hat[2] + v_dec*d_hat[2]
     f = LY_PER_KMS_YR
     return vx*f, vy*f, vz*f
+
+# --- census completion (2026-07-10): the fainter tail of the 5 pc sample ----
+# Astrometry cross-checked against the Wikipedia/RECONS census. Note WISE
+# 1541-2250 was considered and excluded — its revised parallax puts it at
+# ~18.9 ly, outside the cutoff.
+
+star(name="SCR 1845-6357 A", other="", ra=(18,45,5.3), dec=(-1,63,57,48),
+     dist_ly=13.0638, spectral="M8.5V", mass=0.07, radius=0.11, planets=0,
+     planet_names=[], discovered=2004, system="SCR 1845-6357",
+     note="Missed until 2004 — hidden against the crowded southern Milky Way despite being one of our nearest neighbours.")
+star(name="SCR 1845-6357 B", other="", ra=(18,45,2.6), dec=(-1,63,57,52),
+     dist_ly=13.0638, spectral="T6", mass=0.03, radius=0.10, planets=0,
+     planet_names=[], discovered=2006, system="SCR 1845-6357",
+     note="A T-type brown dwarf imaged directly at ~4 AU from its red-dwarf primary.")
+
+star(name="DENIS J1048-3956", other="", ra=(10,48,14.7), dec=(-1,39,56,6),
+     dist_ly=13.1932, spectral="M8.5V", mass=0.08, radius=0.11, planets=0,
+     planet_names=[], discovered=2001, system="DENIS J1048-3956",
+     note="Ultracool dwarf at the star/brown-dwarf boundary; a source of radio flares.")
+
+star(name="UGPS J0722-0540", other="", ra=(7,22,27.3), dec=(-1,5,40,30),
+     dist_ly=13.43, spectral="T9", mass=0.017, radius=0.10, planets=0,
+     planet_names=[], discovered=2010, system="UGPS J0722-0540",
+     note="One of the coolest T dwarfs known (~500 K).")
+
+star(name="Wolf 424 A", other="FL Virginis", ra=(12,33,17.2), dec=(1,9,1,15),
+     dist_ly=14.595, spectral="M5.5Ve", mass=0.143, radius=0.17, planets=0,
+     planet_names=[], discovered=1919, system="Wolf 424",
+     note="Tight flare-star binary, once suspected of hiding brown-dwarf companions.")
+star(name="Wolf 424 B", other="", ra=(12,33,17.2), dec=(1,9,1,15),
+     dist_ly=14.595, spectral="M7Ve", mass=0.131, radius=0.14, planets=0,
+     planet_names=[], discovered=1919, system="Wolf 424", note="")
+
+star(name="Gliese 440", other="LP 145-141", ra=(11,45,42.9), dec=(-1,64,50,29),
+     dist_ly=15.1226, spectral="DQ6", mass=0.75, radius=0.011, planets=0,
+     planet_names=[], discovered=1957, system="Gliese 440",
+     note="The fourth-nearest white dwarf — a carbon-atmosphere stellar remnant older than the Sun.")
+
+star(name="LHS 288", other="Luyten 143-23", ra=(10,44,21.2), dec=(-1,61,12,36),
+     dist_ly=15.7586, spectral="M5.5V", mass=0.11, radius=0.15, planets=0,
+     planet_names=[], discovered=1979, system="LHS 288",
+     note="Faint southern red dwarf, caught by its proper motion in Luyten's surveys.")
+
+star(name="GJ 1002", other="", ra=(0,6,43.8), dec=(-1,7,32,22),
+     dist_ly=15.806, spectral="M5.5V", mass=0.11, radius=0.14, planets=2,
+     planet_names=["GJ 1002 b","GJ 1002 c"], discovered=1978, system="GJ 1002",
+     note="Quiet red dwarf with two temperate Earth-mass planets — one of the nearest potentially habitable systems (2022).")
+
+star(name="Gliese 412 A", other="Lalande 21258", ra=(11,5,28.6), dec=(1,43,31,36),
+     dist_ly=15.9969, spectral="M1.0V", mass=0.48, radius=0.39, planets=0,
+     planet_names=[], discovered=1801, system="Gliese 412",
+     note="Bright M dwarf sharing a wide orbit with the flare star WX Ursae Majoris.")
+star(name="Gliese 412 B", other="WX Ursae Majoris", ra=(11,5,30.4), dec=(1,43,31,18),
+     dist_ly=15.9969, spectral="M5.5V", mass=0.10, radius=0.13, planets=0,
+     planet_names=[], discovered=1939, system="Gliese 412",
+     note="A flare star that can brighten a hundredfold in minutes.")
+
+star(name="AD Leonis", other="GJ 388", ra=(10,19,36.4), dec=(1,19,52,10),
+     dist_ly=16.1939, spectral="M3.0V", mass=0.41, radius=0.43, planets=0,
+     planet_names=[], discovered=1949, system="AD Leonis",
+     note="One of the most active flare stars known — a favourite laboratory for stellar eruptions.")
+
+star(name="Gliese 682", other="CD-44 11909", ra=(17,37,3.7), dec=(-1,44,19,9),
+     dist_ly=16.3328, spectral="M4V", mass=0.27, radius=0.30, planets=2,
+     planet_names=["GJ 682 b (cand.)","GJ 682 c (cand.)"], discovered=1892,
+     system="Gliese 682",
+     note="Quiet southern red dwarf with two candidate super-Earths (2014, unconfirmed).")
 
 # --- build output ----------------------------------------------------------
 

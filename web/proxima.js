@@ -92,7 +92,7 @@ let selected = null;
 const state = { labels: true, shells: true, galaxy: true, hosts: false, paths: false, grid3d: true, filter: "all" };
 
 // --- load & build ----------------------------------------------------------
-fetch("data/stars.json?v=4").then(r => r.json()).then(build);
+fetch("data/stars.json?v=5").then(r => r.json()).then(build);
 
 function build(payload) {
   META = payload.meta;
@@ -213,7 +213,8 @@ function setTime(t) {
     o.pos.copy(o.pos0).addScaledVector(o.vel, t);
     o.sprite.position.copy(o.pos);
     if (o.label) o.label.position.copy(o.pos);
-    if (o.data.name !== "Sun" && o.visible !== false) {
+    // nearest is a fact about the sky — computed over ALL stars, filters or not
+    if (o.data.name !== "Sun") {
       const d = o.pos.length();
       if (d < bestD) { bestD = d; bestName = o.data.name; }
     }
@@ -642,6 +643,21 @@ function fromHash() {
   if (o) select(o);
 }
 window.addEventListener("hashchange", fromHash);
+
+// --- keyboard: Esc closes the info card, ←/→ nudge the time slider ----------
+window.addEventListener("keydown", e => {
+  if (e.target.tagName === "INPUT") return;   // don't hijack the search box
+  if (e.key === "Escape") {
+    document.getElementById("info-close").click();
+  } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+    e.preventDefault();
+    stopPlay();
+    const step = (e.key === "ArrowRight" ? 1 : -1) * (e.shiftKey ? 10000 : 2000);
+    const nt = THREE.MathUtils.clamp(TIME + step, T_MIN, T_MAX);
+    document.getElementById("t-slider").value = nt;
+    setTime(nt);
+  }
+});
 
 // --- resize / render loop --------------------------------------------------
 function resize() {
