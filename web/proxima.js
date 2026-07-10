@@ -92,7 +92,7 @@ let selected = null;
 const state = { labels: true, shells: true, galaxy: true, hosts: false, paths: false, grid3d: true, filter: "all" };
 
 // --- load & build ----------------------------------------------------------
-fetch("data/stars.json").then(r => r.json()).then(build);
+fetch("data/stars.json?v=2").then(r => r.json()).then(build);
 
 function build(payload) {
   META = payload.meta;
