@@ -45,6 +45,72 @@
    ],
    "discovered": "\u2014",
    "note": "Home. The reference point for everything here.",
+   "planet_data": [
+    {
+     "name": "Mercury",
+     "a": 0.39,
+     "m": 0.055,
+     "yr": "\u2014",
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Venus",
+     "a": 0.72,
+     "m": 0.815,
+     "yr": "\u2014",
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Earth",
+     "a": 1.0,
+     "m": 1.0,
+     "yr": "\u2014",
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "Mars",
+     "a": 1.52,
+     "m": 0.107,
+     "yr": "\u2014",
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "Jupiter",
+     "a": 5.2,
+     "m": 318,
+     "yr": "\u2014",
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Saturn",
+     "a": 9.54,
+     "m": 95,
+     "yr": "\u2014",
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Uranus",
+     "a": 19.2,
+     "m": 14.5,
+     "yr": 1781,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Neptune",
+     "a": 30.1,
+     "m": 17.1,
+     "yr": 1846,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 0.0,
    "rv": 0,
    "x": 0.0,
@@ -75,6 +141,32 @@
    ],
    "discovered": 1915,
    "note": "The single nearest star to the Sun. Hosts a temperate rocky planet (Proxima b).",
+   "planet_data": [
+    {
+     "name": "Proxima d",
+     "a": 0.029,
+     "m": 0.26,
+     "yr": 2022,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Proxima b",
+     "a": 0.0485,
+     "m": 1.07,
+     "yr": 2016,
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "Proxima c",
+     "a": 1.49,
+     "m": 7.0,
+     "yr": 2019,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 3858.6,
    "rv": -22.4,
    "x": -1.5477,
@@ -101,6 +193,7 @@
    "planet_names": [],
    "discovered": "antiquity",
    "note": "A near-twin of the Sun; brightest component of the closest star system.",
+   "planet_data": [],
    "pm": 3672.6,
    "rv": -22.3,
    "x": -1.6241,
@@ -127,6 +220,7 @@
    "planet_names": [],
    "discovered": "antiquity",
    "note": "Orange dwarf orbiting Alpha Cen A every ~80 years.",
+   "planet_data": [],
    "pm": 3672.6,
    "rv": -22.3,
    "x": -1.6241,
@@ -155,6 +249,16 @@
    ],
    "discovered": 1916,
    "note": "Highest proper motion of any known star. A sub-Earth planet was confirmed in 2024.",
+   "planet_data": [
+    {
+     "name": "Barnard b",
+     "a": 0.023,
+     "m": 0.37,
+     "yr": 2024,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 10367.8,
    "rv": -110.5,
    "x": -0.0568,
@@ -181,6 +285,7 @@
    "planet_names": [],
    "discovered": 2013,
    "note": "Nearest brown-dwarf pair; discovered only in 2013 despite its proximity.",
+   "planet_data": [],
    "pm": 2785.1,
    "rv": 0,
    "x": -3.7054,
@@ -207,6 +312,7 @@
    "planet_names": [],
    "discovered": 2013,
    "note": "Shows weather \u2014 patchy clouds rotating in and out of view.",
+   "planet_data": [],
    "pm": 2785.1,
    "rv": 0,
    "x": -3.7312,
@@ -233,6 +339,7 @@
    "planet_names": [],
    "discovered": 2014,
    "note": "Coldest known object of its kind (~250 K); a rogue sub-brown dwarf.",
+   "planet_data": [],
    "pm": 8144.4,
    "rv": 0,
    "x": -5.1011,
@@ -262,6 +369,24 @@
    ],
    "discovered": 1918,
    "note": "A faint, active flare star; a science-fiction fixture.",
+   "planet_data": [
+    {
+     "name": "Wolf 359 c",
+     "a": 0.018,
+     "m": 3.8,
+     "yr": 2019,
+     "hz": false,
+     "disputed": true
+    },
+    {
+     "name": "Wolf 359 b",
+     "a": 1.845,
+     "m": 44,
+     "yr": 2019,
+     "hz": false,
+     "disputed": true
+    }
+   ],
    "pm": 4714.9,
    "rv": 19,
    "x": -7.4997,
@@ -291,6 +416,24 @@
    ],
    "discovered": 1801,
    "note": "Brightest red dwarf in the northern sky; hosts giant planets.",
+   "planet_data": [
+    {
+     "name": "Lalande 21185 b",
+     "a": 0.079,
+     "m": 2.7,
+     "yr": 2017,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Lalande 21185 c",
+     "a": 2.94,
+     "m": 18,
+     "yr": 2021,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 4807.1,
    "rv": -85,
    "x": -6.5166,
@@ -317,6 +460,7 @@
    "planet_names": [],
    "discovered": "antiquity",
    "note": "The brightest star in Earth's night sky.",
+   "planet_data": [],
    "pm": 1339.3,
    "rv": -5.5,
    "x": -1.6326,
@@ -343,6 +487,7 @@
    "planet_names": [],
    "discovered": 1862,
    "note": "Nearest white dwarf \u2014 a Sun's-worth of mass in an Earth-sized sphere.",
+   "planet_data": [],
    "pm": 1339.3,
    "rv": -5.5,
    "x": -1.6584,
@@ -369,6 +514,7 @@
    "planet_names": [],
    "discovered": 1948,
    "note": "Close binary of flare stars.",
+   "planet_data": [],
    "pm": 2491.6,
    "rv": 29,
    "x": 7.5764,
@@ -395,6 +541,7 @@
    "planet_names": [],
    "discovered": 1948,
    "note": "The prototype UV Ceti flare star \u2014 brightens dramatically in minutes.",
+   "planet_data": [],
    "pm": 2491.6,
    "rv": 29,
    "x": 7.5506,
@@ -421,6 +568,7 @@
    "planet_names": [],
    "discovered": 1925,
    "note": "A young, active flare star.",
+   "planet_data": [],
    "pm": 665.3,
    "rv": -4,
    "x": 1.915,
@@ -447,6 +595,7 @@
    "planet_names": [],
    "discovered": 1926,
    "note": "Will become the nearest star to the Sun in ~36,000 years.",
+   "planet_data": [],
    "pm": 1595.9,
    "rv": -78,
    "x": 7.3684,
@@ -475,6 +624,16 @@
    ],
    "discovered": "antiquity",
    "note": "A young Sun-like star with a Jupiter-mass planet and two debris belts.",
+   "planet_data": [
+    {
+     "name": "\u00c6gir (b)",
+     "a": 3.5,
+     "m": 210,
+     "yr": 2000,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 975.2,
    "rv": 15.5,
    "x": 6.1847,
@@ -504,6 +663,24 @@
    ],
    "discovered": 1752,
    "note": "One of the brightest and quietest red dwarfs; a prime imaging target.",
+   "planet_data": [
+    {
+     "name": "GJ 887 b",
+     "a": 0.068,
+     "m": 4.2,
+     "yr": 2020,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "GJ 887 c",
+     "a": 0.12,
+     "m": 7.6,
+     "yr": 2020,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 6895.9,
    "rv": 9.7,
    "x": 8.4508,
@@ -532,6 +709,16 @@
    ],
    "discovered": 1926,
    "note": "A quiet red dwarf with a temperate Earth-mass planet.",
+   "planet_data": [
+    {
+     "name": "Ross 128 b",
+     "a": 0.049,
+     "m": 1.35,
+     "yr": 2017,
+     "hz": true,
+     "disputed": false
+    }
+   ],
    "pm": 1360.9,
    "rv": -31,
    "x": -10.9906,
@@ -558,6 +745,7 @@
    "planet_names": [],
    "discovered": 1935,
    "note": "Triple flare-star system.",
+   "planet_data": [],
    "pm": 3257.7,
    "rv": 0,
    "x": 10.0458,
@@ -584,6 +772,7 @@
    "planet_names": [],
    "discovered": 1804,
    "note": "First star to have its distance measured (Bessel, 1838).",
+   "planet_data": [],
    "pm": 5228.2,
    "rv": -64.5,
    "x": 6.4753,
@@ -610,6 +799,7 @@
    "planet_names": [],
    "discovered": 1804,
    "note": "Orange-dwarf companion.",
+   "planet_data": [],
    "pm": 5172.3,
    "rv": -64,
    "x": 6.48,
@@ -636,6 +826,7 @@
    "planet_names": [],
    "discovered": "antiquity",
    "note": "Eighth-brightest star in the night sky.",
+   "planet_data": [],
    "pm": 1258.5,
    "rv": -3.2,
    "x": -4.7928,
@@ -662,6 +853,7 @@
    "planet_names": [],
    "discovered": 1896,
    "note": "Faint white-dwarf companion.",
+   "planet_data": [],
    "pm": 1258.5,
    "rv": -3.2,
    "x": -4.8186,
@@ -688,6 +880,7 @@
    "planet_names": [],
    "discovered": 1832,
    "note": "",
+   "planet_data": [],
    "pm": 2320.0,
    "rv": 1,
    "x": 1.0782,
@@ -714,6 +907,7 @@
    "planet_names": [],
    "discovered": 1832,
    "note": "Red-dwarf binary.",
+   "planet_data": [],
    "pm": 2270.4,
    "rv": 0,
    "x": 1.0781,
@@ -742,6 +936,16 @@
    ],
    "discovered": 1838,
    "note": "Flare-star binary; the primary hosts a super-Earth.",
+   "planet_data": [
+    {
+     "name": "Groombridge 34 Ab",
+     "a": 0.072,
+     "m": 3.0,
+     "yr": 2014,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 2918.1,
    "rv": 12,
    "x": 8.328,
@@ -768,6 +972,7 @@
    "planet_names": [],
    "discovered": 1838,
    "note": "",
+   "planet_data": [],
    "pm": 2918.1,
    "rv": 12,
    "x": 8.3022,
@@ -794,6 +999,7 @@
    "planet_names": [],
    "discovered": 1900,
    "note": "One of the least luminous stars known.",
+   "planet_data": [],
    "pm": 1643.0,
    "rv": 0,
    "x": -6.3414,
@@ -822,6 +1028,16 @@
    ],
    "discovered": "antiquity",
    "note": "A Sun-like orange dwarf with a cold Jovian planet and two brown-dwarf companions.",
+   "planet_data": [
+    {
+     "name": "Epsilon Indi Ab",
+     "a": 11.6,
+     "m": 2000,
+     "yr": 2018,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 4708.9,
    "rv": -40,
    "x": 5.6765,
@@ -853,6 +1069,40 @@
    ],
    "discovered": "antiquity",
    "note": "Nearest single Sun-like star; a candidate rocky planet sits near its habitable zone.",
+   "planet_data": [
+    {
+     "name": "Tau Ceti g",
+     "a": 0.133,
+     "m": 1.75,
+     "yr": 2017,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Tau Ceti h",
+     "a": 0.243,
+     "m": 1.83,
+     "yr": 2017,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Tau Ceti e",
+     "a": 0.538,
+     "m": 3.9,
+     "yr": 2012,
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "Tau Ceti f",
+     "a": 1.334,
+     "m": 3.9,
+     "yr": 2012,
+     "hz": true,
+     "disputed": false
+    }
+   ],
    "pm": 1921.2,
    "rv": -17,
    "x": 10.2932,
@@ -883,6 +1133,32 @@
    ],
    "discovered": 1974,
    "note": "A quiet red dwarf with a compact planetary system.",
+   "planet_data": [
+    {
+     "name": "GJ 1061 b",
+     "a": 0.021,
+     "m": 0.94,
+     "yr": 2019,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "GJ 1061 c",
+     "a": 0.035,
+     "m": 1.75,
+     "yr": 2019,
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "GJ 1061 d",
+     "a": 0.054,
+     "m": 1.68,
+     "yr": 2019,
+     "hz": true,
+     "disputed": false
+    }
+   ],
    "pm": 832.7,
    "rv": -20,
    "x": 5.0232,
@@ -913,6 +1189,32 @@
    ],
    "discovered": 1946,
    "note": "Three sub-Earth planets; a possible radio-detected magnetic field.",
+   "planet_data": [
+    {
+     "name": "YZ Ceti b",
+     "a": 0.016,
+     "m": 0.7,
+     "yr": 2017,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "YZ Ceti c",
+     "a": 0.022,
+     "m": 0.98,
+     "yr": 2017,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "YZ Ceti d",
+     "a": 0.028,
+     "m": 1.09,
+     "yr": 2017,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 1794.0,
    "rv": 28,
    "x": 11.0172,
@@ -942,6 +1244,24 @@
    ],
    "discovered": 1935,
    "note": "Hosts a temperate super-Earth; target of a 2017 interstellar message.",
+   "planet_data": [
+    {
+     "name": "GJ 273 c",
+     "a": 0.036,
+     "m": 1.18,
+     "yr": 2017,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "GJ 273 b",
+     "a": 0.091,
+     "m": 2.89,
+     "yr": 2017,
+     "hz": true,
+     "disputed": false
+    }
+   ],
    "pm": 3737.9,
    "rv": 18,
    "x": -4.5772,
@@ -972,6 +1292,32 @@
    ],
    "discovered": 2003,
    "note": "A tiny, ancient red dwarf with two of the most Earth-like planets known.",
+   "planet_data": [
+    {
+     "name": "Teegarden b",
+     "a": 0.0252,
+     "m": 1.05,
+     "yr": 2019,
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "Teegarden c",
+     "a": 0.0443,
+     "m": 1.11,
+     "yr": 2019,
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "Teegarden d",
+     "a": 0.0791,
+     "m": 0.82,
+     "yr": 2024,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 5122.1,
    "rv": 68,
    "x": 8.7097,
@@ -1000,6 +1346,16 @@
    ],
    "discovered": 1898,
    "note": "A halo star from an ancient, disrupted dwarf galaxy \u2014 orbiting the wrong way round the Milky Way.",
+   "planet_data": [
+    {
+     "name": "Kapteyn b",
+     "a": 0.168,
+     "m": 4.8,
+     "yr": 2014,
+     "hz": true,
+     "disputed": true
+    }
+   ],
    "pm": 8644.4,
    "rv": 245,
    "x": 1.8982,
@@ -1026,6 +1382,7 @@
    "planet_names": [],
    "discovered": 1752,
    "note": "One of the brightest red dwarfs visible from Earth.",
+   "planet_data": [],
    "pm": 3455.0,
    "rv": 21,
    "x": 7.6441,
@@ -1052,6 +1409,7 @@
    "planet_names": [],
    "discovered": 1890,
    "note": "Red-dwarf binary.",
+   "planet_data": [],
    "pm": 989.3,
    "rv": -34,
    "x": 6.4306,
@@ -1078,6 +1436,7 @@
    "planet_names": [],
    "discovered": 1890,
    "note": "A flare star.",
+   "planet_data": [],
    "pm": 989.3,
    "rv": -34,
    "x": 6.4048,
@@ -1108,6 +1467,32 @@
    ],
    "discovered": 1919,
    "note": "Hosts a potentially habitable super-Earth (Wolf 1061 c).",
+   "planet_data": [
+    {
+     "name": "Wolf 1061 b",
+     "a": 0.037,
+     "m": 1.9,
+     "yr": 2015,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Wolf 1061 c",
+     "a": 0.089,
+     "m": 3.4,
+     "yr": 2015,
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "Wolf 1061 d",
+     "a": 0.47,
+     "m": 7.7,
+     "yr": 2015,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 1558.2,
    "rv": -20,
    "x": -5.2293,
@@ -1134,6 +1519,7 @@
    "planet_names": [],
    "discovered": 1917,
    "note": "Nearest solitary white dwarf; its atmosphere is polluted by shredded planetary debris.",
+   "planet_data": [],
    "pm": 2977.6,
    "rv": 54,
    "x": 13.6885,
@@ -1160,6 +1546,7 @@
    "planet_names": [],
    "discovered": 1900,
    "note": "A metal-poor, high-velocity red dwarf.",
+   "planet_data": [],
    "pm": 6099.5,
    "rv": 24,
    "x": 11.2638,
@@ -1188,6 +1575,16 @@
    ],
    "discovered": 1900,
    "note": "A flare star.",
+   "planet_data": [
+    {
+     "name": "TZ Arietis b",
+     "a": 0.88,
+     "m": 21,
+     "yr": 2020,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 1962.5,
    "rv": 34,
    "x": 12.2919,
@@ -1217,6 +1614,24 @@
    ],
    "discovered": 1900,
    "note": "A nearby red dwarf with two known planets.",
+   "planet_data": [
+    {
+     "name": "Gliese 687 b",
+     "a": 0.16,
+     "m": 18,
+     "yr": 2014,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Gliese 687 c",
+     "a": 1.16,
+     "m": 16,
+     "yr": 2020,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 1389.4,
    "rv": -29,
    "x": -0.5623,
@@ -1245,6 +1660,16 @@
    ],
    "discovered": 1957,
    "note": "Hosts a Neptune-mass planet on a close orbit.",
+   "planet_data": [
+    {
+     "name": "Gliese 674 b",
+     "a": 0.039,
+     "m": 12,
+     "yr": 2007,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 1049.6,
    "rv": -3,
    "x": -1.383,
@@ -1271,6 +1696,7 @@
    "planet_names": [],
    "discovered": 1900,
    "note": "Triple red-dwarf system.",
+   "planet_data": [],
    "pm": 1658.8,
    "rv": 5,
    "x": 5.1766,
@@ -1302,6 +1728,40 @@
    ],
    "discovered": 1900,
    "note": "First red dwarf found to host planets; a resonant chain of four worlds.",
+   "planet_data": [
+    {
+     "name": "Gliese 876 d",
+     "a": 0.021,
+     "m": 6.8,
+     "yr": 2005,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Gliese 876 c",
+     "a": 0.13,
+     "m": 227,
+     "yr": 2000,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Gliese 876 b",
+     "a": 0.21,
+     "m": 723,
+     "yr": 1998,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Gliese 876 e",
+     "a": 0.33,
+     "m": 15,
+     "yr": 2010,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 1173.6,
    "rv": -1.5,
    "x": 14.147,
@@ -1331,6 +1791,24 @@
    ],
    "discovered": 1900,
    "note": "A Jupiter analogue plus a super-Earth \u2014 a scaled-down Solar System.",
+   "planet_data": [
+    {
+     "name": "Gliese 832 c",
+     "a": 0.16,
+     "m": 5.4,
+     "yr": 2014,
+     "hz": true,
+     "disputed": false
+    },
+    {
+     "name": "Gliese 832 b",
+     "a": 3.56,
+     "m": 216,
+     "yr": 2008,
+     "hz": false,
+     "disputed": false
+    }
+   ],
    "pm": 2071.4,
    "rv": 13,
    "x": 8.5303,
@@ -1359,6 +1837,16 @@
    ],
    "discovered": "antiquity",
    "note": "Triple system; in Star Trek lore, the star of the planet Vulcan.",
+   "planet_data": [
+    {
+     "name": "40 Eridani b",
+     "a": 0.215,
+     "m": 8.5,
+     "yr": 2018,
+     "hz": false,
+     "disputed": true
+    }
+   ],
    "pm": 4088.3,
    "rv": -42,
    "x": 7.1423,
@@ -1385,6 +1873,7 @@
    "planet_names": [],
    "discovered": 1783,
    "note": "The most easily observed white dwarf in the sky.",
+   "planet_data": [],
    "pm": 4088.3,
    "rv": -42,
    "x": 7.1165,
@@ -1411,6 +1900,7 @@
    "planet_names": [],
    "discovered": 1783,
    "note": "Red-dwarf flare star.",
+   "planet_data": [],
    "pm": 4088.3,
    "rv": -42,
    "x": 7.1454,

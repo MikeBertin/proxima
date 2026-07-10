@@ -6,6 +6,26 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-10 — Planets mini-view (log-AU system strips)
+
+Enriched the catalogue with **per-planet detail** for all 52 planets across the
+23 host systems + the Sun: `PLANETS` dict in the builder → `planet_data` in the
+JSON, each planet carrying `(a AU, mass M⊕, discovery year, temperate flag,
+disputed flag)` from the discovery literature. Count-checked against the
+existing `planets` fields (no mismatches).
+
+The info card now renders a **system strip** for any planet-host: an inline SVG
+with the host star peeking in from the left, planets as dots on a **log-AU
+axis** (ticks 0.1/1/10 AU), dot size = mass class, colour = rocky tan /
+Neptune teal / Jovian orange, **green ring = temperate orbit**, dashed =
+disputed (Kapteyn b, 40 Eri b, the Wolf 359 candidates). Tapping a dot prints
+its numbers (a, mass — M⊕ or MJ, year, flags). The Sun's own strip doubles as
+a legend by familiarity: inner rockies, ringed Earth/Mars, big Jupiter/Saturn,
+teal ice giants.
+
+Verified headlessly: Tau Ceti (4 dots, e/f ringed) and the Sun (8 dots) render;
+a probe-tap on Earth returned "Earth · 1 AU · 1 M⊕ · temperate".
+
 ## 2026-07-10 — OG image, mobile pass, 3D grid, trail arrows
 
 **OG/social card.** Orrery-style meta tags (og:/twitter:, image URLs pre-pointed

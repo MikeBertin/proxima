@@ -457,7 +457,57 @@ function showInfo(s) {
   const pl = document.getElementById("i-planets");
   pl.innerHTML = s.planet_names && s.planet_names.length
     ? `<b>Planets:</b> ${s.planet_names.join(", ")}` : "";
+  renderSystemStrip(s);
   document.getElementById("i-note").textContent = s.note || "";
+}
+
+// --- planets mini-view: log-scale system strip ------------------------------
+// One row per system: the star at the left, planets as dots placed by orbital
+// distance on a log-AU axis. Dot size = mass class, green ring = temperate,
+// dashed = disputed/candidate. Tap a dot for its numbers.
+function renderSystemStrip(s) {
+  const box = document.getElementById("i-system");
+  const pd = s.planet_data || [];
+  if (!pd.length) { box.innerHTML = ""; return; }
+
+  const W = 244, AXY = 30, LMIN = Math.log10(0.012), LMAX = Math.log10(45);
+  const X = a => 18 + (Math.log10(a) - LMIN) / (LMAX - LMIN) * (W - 26);
+  const rFor = m => m < 0.5 ? 2.2 : m < 2 ? 3 : m < 10 ? 4.2 : m < 50 ? 5.5 : 7.5;
+  const cFor = m => m < 10 ? "#c9a36b" : m < 50 ? "#6fb7d9" : "#e0a35c";
+  const fmtM = m => m >= 50 ? (m / 318).toFixed(1) + " MJ" : m + " M⊕";
+
+  let svg = `<svg viewBox="0 0 ${W} 46" xmlns="http://www.w3.org/2000/svg">`;
+  svg += `<line x1="12" y1="${AXY}" x2="${W - 6}" y2="${AXY}" stroke="#2b3358" stroke-width="1"/>`;
+  for (const t of [0.1, 1, 10]) {
+    const x = X(t);
+    svg += `<line x1="${x}" y1="${AXY - 3}" x2="${x}" y2="${AXY + 3}" stroke="#3d4a7a"/>` +
+      `<text x="${x}" y="${AXY + 13}" fill="#5a638c" font-size="8" text-anchor="middle" ` +
+      `font-family="ui-monospace,Menlo,monospace">${t} AU</text>`;
+  }
+  // the host star, peeking in from the left edge
+  svg += `<circle cx="2" cy="${AXY}" r="9" fill="${s.colour}" opacity="0.9"/>`;
+  pd.forEach((p, i) => {
+    const x = X(p.a), r = rFor(p.m);
+    const hz = p.hz ? ` stroke="#7ce38b" stroke-width="1.6"` : "";
+    const dis = p.disputed ? ` stroke-dasharray="2 1.6" stroke="#9aa3c7" stroke-width="1.2" opacity="0.7"` : "";
+    svg += `<circle class="pl" data-i="${i}" cx="${x}" cy="${AXY}" r="${r}" ` +
+      `fill="${cFor(p.m)}"${p.disputed ? dis : hz}><title>${p.name}</title></circle>`;
+  });
+  svg += `</svg>`;
+
+  box.innerHTML = `<div class="syshead">planetary system · log scale</div>` + svg +
+    `<div class="sysline" id="i-sysline">tap a planet</div>`;
+
+  const line = document.getElementById("i-sysline");
+  box.querySelectorAll("circle.pl").forEach(c => {
+    c.addEventListener("click", () => {
+      const p = pd[+c.dataset.i];
+      line.innerHTML = `<b>${p.name}</b> · ${p.a} AU · ${fmtM(p.m)}` +
+        (p.yr === "—" ? "" : ` · ${p.yr}`) +
+        (p.hz ? ` · <span style="color:#7ce38b">temperate</span>` : "") +
+        (p.disputed ? ` · <span style="color:#e0a35c">disputed</span>` : "");
+    });
+  });
 }
 
 document.getElementById("info-close").onclick = () => {

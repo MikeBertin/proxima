@@ -306,6 +306,94 @@ star(name="40 Eridani C", other="", ra=(4,15,16.3), dec=(-1,7,39,10),
      dist_ly=16.333, spectral="M4.5V", mass=0.20, radius=0.23, planets=0,
      planet_names=[], discovered=1783, system="40 Eridani", note="Red-dwarf flare star.")
 
+# --- per-planet detail for the info-card mini-view --------------------------
+# Tuples: (name, a_AU, mass_Mearth, year, temperate/hz, disputed).
+# a and mass from the discovery/refinement literature (approximate where the
+# literature disagrees); "temperate" = broadly habitable-zone by the usual
+# conservative-to-optimistic definitions, not a claim of habitability.
+PLANETS = {
+    "Sun": [
+        ("Mercury", 0.39, 0.055, "—", False, False),
+        ("Venus", 0.72, 0.815, "—", False, False),
+        ("Earth", 1.0, 1.0, "—", True, False),
+        ("Mars", 1.52, 0.107, "—", True, False),
+        ("Jupiter", 5.2, 318, "—", False, False),
+        ("Saturn", 9.54, 95, "—", False, False),
+        ("Uranus", 19.2, 14.5, 1781, False, False),
+        ("Neptune", 30.1, 17.1, 1846, False, False),
+    ],
+    "Proxima Centauri": [
+        ("Proxima d", 0.029, 0.26, 2022, False, False),
+        ("Proxima b", 0.0485, 1.07, 2016, True, False),
+        ("Proxima c", 1.49, 7.0, 2019, False, False),
+    ],
+    "Barnard's Star": [("Barnard b", 0.023, 0.37, 2024, False, False)],
+    "Wolf 359": [
+        ("Wolf 359 c", 0.018, 3.8, 2019, False, True),
+        ("Wolf 359 b", 1.845, 44, 2019, False, True),
+    ],
+    "Lalande 21185": [
+        ("Lalande 21185 b", 0.079, 2.7, 2017, False, False),
+        ("Lalande 21185 c", 2.94, 18, 2021, False, False),
+    ],
+    "Epsilon Eridani": [("Ægir (b)", 3.5, 210, 2000, False, False)],
+    "Lacaille 9352": [
+        ("GJ 887 b", 0.068, 4.2, 2020, False, False),
+        ("GJ 887 c", 0.12, 7.6, 2020, False, False),
+    ],
+    "Ross 128": [("Ross 128 b", 0.049, 1.35, 2017, True, False)],
+    "Groombridge 34 A": [("Groombridge 34 Ab", 0.072, 3.0, 2014, False, False)],
+    "Epsilon Indi A": [("Epsilon Indi Ab", 11.6, 2000, 2018, False, False)],
+    "Tau Ceti": [
+        ("Tau Ceti g", 0.133, 1.75, 2017, False, False),
+        ("Tau Ceti h", 0.243, 1.83, 2017, False, False),
+        ("Tau Ceti e", 0.538, 3.9, 2012, True, False),
+        ("Tau Ceti f", 1.334, 3.9, 2012, True, False),
+    ],
+    "GJ 1061": [
+        ("GJ 1061 b", 0.021, 0.94, 2019, False, False),
+        ("GJ 1061 c", 0.035, 1.75, 2019, True, False),
+        ("GJ 1061 d", 0.054, 1.68, 2019, True, False),
+    ],
+    "YZ Ceti": [
+        ("YZ Ceti b", 0.016, 0.70, 2017, False, False),
+        ("YZ Ceti c", 0.022, 0.98, 2017, False, False),
+        ("YZ Ceti d", 0.028, 1.09, 2017, False, False),
+    ],
+    "Luyten's Star": [
+        ("GJ 273 c", 0.036, 1.18, 2017, False, False),
+        ("GJ 273 b", 0.091, 2.89, 2017, True, False),
+    ],
+    "Teegarden's Star": [
+        ("Teegarden b", 0.0252, 1.05, 2019, True, False),
+        ("Teegarden c", 0.0443, 1.11, 2019, True, False),
+        ("Teegarden d", 0.0791, 0.82, 2024, False, False),
+    ],
+    "Kapteyn's Star": [("Kapteyn b", 0.168, 4.8, 2014, True, True)],
+    "Wolf 1061": [
+        ("Wolf 1061 b", 0.037, 1.9, 2015, False, False),
+        ("Wolf 1061 c", 0.089, 3.4, 2015, True, False),
+        ("Wolf 1061 d", 0.47, 7.7, 2015, False, False),
+    ],
+    "TZ Arietis": [("TZ Arietis b", 0.88, 21, 2020, False, False)],
+    "Gliese 674": [("Gliese 674 b", 0.039, 12, 2007, False, False)],
+    "Gliese 687": [
+        ("Gliese 687 b", 0.16, 18, 2014, False, False),
+        ("Gliese 687 c", 1.16, 16, 2020, False, False),
+    ],
+    "Gliese 876": [
+        ("Gliese 876 d", 0.021, 6.8, 2005, False, False),
+        ("Gliese 876 c", 0.13, 227, 2000, False, False),
+        ("Gliese 876 b", 0.21, 723, 1998, False, False),
+        ("Gliese 876 e", 0.33, 15, 2010, False, False),
+    ],
+    "Gliese 832": [
+        ("Gliese 832 c", 0.16, 5.4, 2014, True, False),
+        ("Gliese 832 b", 3.56, 216, 2008, False, False),
+    ],
+    "40 Eridani A": [("40 Eridani b", 0.215, 8.5, 2018, False, True)],
+}
+
 # --- kinematics: proper motion + radial velocity ---------------------------
 # Per object: (mu_RA*  [mas/yr, incl. cos-dec],  mu_Dec [mas/yr],  RV [km/s]).
 # RV negative = approaching. Values from standard Hipparcos/Gaia-era literature.
@@ -423,6 +511,10 @@ def process():
             "planet_names": s["planet_names"],
             "discovered": s["discovered"],
             "note": s["note"],
+            "planet_data": [
+                {"name": p[0], "a": p[1], "m": p[2], "yr": p[3], "hz": p[4], "disputed": p[5]}
+                for p in PLANETS.get(s["name"], [])
+            ],
             "pm": pm_total, "rv": rv,
             "x": round(x, 4), "y": round(y, 4), "z": round(z, 4),
             "vx": round(vx, 10), "vy": round(vy, 10), "vz": round(vz, 10),

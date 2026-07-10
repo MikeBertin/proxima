@@ -61,6 +61,14 @@
   #info .stats dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
   #info .planets{margin-top:10px;font-size:11.5px;color:var(--dim)}
   #info .planets b{color:var(--warm)}
+  #i-system{margin-top:8px}
+  #i-system .syshead{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;
+    letter-spacing:1px;color:var(--dim);margin-bottom:2px}
+  #i-system svg{display:block;width:100%}
+  #i-system circle.pl{cursor:pointer}
+  #i-system .sysline{font-family:var(--mono);font-size:10.5px;color:var(--dim);
+    min-height:15px;margin-top:2px}
+  #i-system .sysline b{color:var(--ink)}
   #info .note{margin-top:10px;font-size:11.5px;line-height:1.45;color:#c3caea}
   #info .close{position:absolute;top:10px;right:12px;border:none;background:none;color:var(--dim);font-size:16px;padding:0;cursor:pointer}
 
@@ -173,6 +181,7 @@
   <div class="sub" id="i-sub">—</div>
   <dl class="stats" id="i-stats"></dl>
   <div class="planets" id="i-planets"></div>
+  <div id="i-system"></div>
   <div class="note" id="i-note"></div>
 </div>
 

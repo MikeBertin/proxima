@@ -60,12 +60,16 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 | 1 | 3D neighbourhood: real positions, per-star stats, galaxy plane + GC, search / filters / deep-links | ✅ 2026-07-04 |
 | 2 | **Proper-motion time-scrub** (±80,000 yr, real space velocities, live nearest-star readout, motion trails) | ✅ 2026-07-04 |
 | 3 | Polish: OG image, mobile pass, soft 3D grid, trail direction arrows | ✅ 2026-07-10 |
-| 4 | Per-star "planets" mini-view | — |
+| 4 | Per-star "planets" mini-view (log-AU system strips, all 52 planets enriched) | ✅ 2026-07-10 |
 | 5 | Deploy to GitHub Pages (public repo, sister to Orrery) — *pending decision* | — |
 
 ## Controls
 
 - **drag** orbit · **scroll** zoom · **click** a star for its stat card
+- **Planetary-system strip** (on the stat card, for the 23 planet-hosts + Sun): each
+  planet plotted on a log-AU axis — dot size = mass class (rocky/Neptune/Jovian by
+  colour), green ring = temperate orbit, dashed = disputed. Tap a dot for distance,
+  mass and discovery year.
 - **Time-scrub**: drag the slider (±80,000 yr) or hit play to watch the neighbourhood
   rearrange under real proper motion — the "nearest star" readout updates live, and
   **motion trails** show each star's path. Watch **Ross 248** slide in to become our
