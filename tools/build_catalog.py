@@ -91,9 +91,10 @@ star(name="Toliman", other="Alpha Centauri B", ra=(14,39,35.1), dec=(-1,60,50,14
      note="Orange dwarf orbiting Alpha Cen A every ~80 years.")
 
 star(name="Barnard's Star", other="", ra=(17,57,48.5), dec=(1,4,41,36),
-     dist_ly=5.9629, spectral="M4.0Ve", mass=0.144, radius=0.19, planets=1,
-     planet_names=["Barnard b"], discovered=1916, system="Barnard's Star",
-     note="Highest proper motion of any known star. A sub-Earth planet was confirmed in 2024.")
+     dist_ly=5.9629, spectral="M4.0Ve", mass=0.144, radius=0.19, planets=4,
+     planet_names=["Barnard d","Barnard b","Barnard c","Barnard e"],
+     discovered=1916, system="Barnard's Star",
+     note="Highest proper motion of any known star. Four sub-Earth planets confirmed 2024–25 — all packed inside a 7-day orbit.")
 
 star(name="Luhman 16 A", other="WISE 1049-5319 A", ra=(10,49,18.9), dec=(-1,53,19,10),
      dist_ly=6.5102, spectral="L7.5", mass=0.032, radius=0.10, planets=0,
@@ -327,7 +328,12 @@ PLANETS = {
         ("Proxima b", 0.0485, 1.07, 2016, True, False),
         ("Proxima c", 1.49, 7.0, 2019, False, False),
     ],
-    "Barnard's Star": [("Barnard b", 0.023, 0.37, 2024, False, False)],
+    "Barnard's Star": [
+        ("Barnard d", 0.0188, 0.26, 2025, False, False),
+        ("Barnard b", 0.0229, 0.30, 2024, False, False),
+        ("Barnard c", 0.0274, 0.34, 2025, False, False),
+        ("Barnard e", 0.0381, 0.19, 2025, False, False),
+    ],
     "Wolf 359": [
         ("Wolf 359 c", 0.018, 3.8, 2019, False, True),
         ("Wolf 359 b", 1.845, 44, 2019, False, True),

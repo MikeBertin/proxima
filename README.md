@@ -30,7 +30,7 @@ Galactic Centre (Sgr A*).
 
 51 objects within ~5 pc (16.4 ly): 3 Sun-like stars, dozens of red dwarfs, the
 white dwarfs Sirius B / Procyon B / Van Maanen's Star, brown dwarfs (Luhman 16,
-WISE 0855), and 23 planet-hosting systems (52 known planets) — from Proxima b to
+WISE 0855), and 23 planet-hosting systems (55 known planets) — from Proxima b to
 the four-world resonant chain of Gliese 876.
 
 ## The data
@@ -72,7 +72,7 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 | 1 | 3D neighbourhood: real positions, per-star stats, galaxy plane + GC, search / filters / deep-links | ✅ 2026-07-04 |
 | 2 | **Proper-motion time-scrub** (±80,000 yr, real space velocities, live nearest-star readout, motion trails) | ✅ 2026-07-04 |
 | 3 | Polish: OG image, mobile pass, soft 3D grid, trail direction arrows | ✅ 2026-07-10 |
-| 4 | Per-star "planets" mini-view (log-AU system strips, all 52 planets enriched) | ✅ 2026-07-10 |
+| 4 | Per-star "planets" mini-view (log-AU system strips, every known planet enriched) | ✅ 2026-07-10 |
 | 5 | Deploy to GitHub Pages (public repo, sister to Orrery) | ✅ 2026-07-10 |
 
 ## Controls

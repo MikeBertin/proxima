@@ -245,18 +245,45 @@
    "mass": 0.144,
    "radius": 0.19,
    "colour": "#ff7b4d",
-   "planets": 1,
+   "planets": 4,
    "planet_names": [
-    "Barnard b"
+    "Barnard d",
+    "Barnard b",
+    "Barnard c",
+    "Barnard e"
    ],
    "discovered": 1916,
-   "note": "Highest proper motion of any known star. A sub-Earth planet was confirmed in 2024.",
+   "note": "Highest proper motion of any known star. Four sub-Earth planets confirmed 2024\u201325 \u2014 all packed inside a 7-day orbit.",
    "planet_data": [
     {
+     "name": "Barnard d",
+     "a": 0.0188,
+     "m": 0.26,
+     "yr": 2025,
+     "hz": false,
+     "disputed": false
+    },
+    {
      "name": "Barnard b",
-     "a": 0.023,
-     "m": 0.37,
+     "a": 0.0229,
+     "m": 0.3,
      "yr": 2024,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Barnard c",
+     "a": 0.0274,
+     "m": 0.34,
+     "yr": 2025,
+     "hz": false,
+     "disputed": false
+    },
+    {
+     "name": "Barnard e",
+     "a": 0.0381,
+     "m": 0.19,
+     "yr": 2025,
      "hz": false,
      "disputed": false
     }
