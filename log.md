@@ -6,6 +6,21 @@ Decisions, progress notes, session diary. Most recent first.
 
 ---
 
+## 2026-07-13 — Remaining review nits
+
+- **Select-then-filter ghost**: a selection that no longer passes the active
+  filter now closes the info card instead of lingering as a ring on a dimmed
+  star (guard at the end of applyFilter).
+- **Close-binary click cycling**: clicking a spot where sprites overlap now
+  cycles through the stars under the cursor — click Sirius twice and you get
+  both A and B (unique-objects-in-ray-order, advance from current selection).
+- **Brittle stat lookup**: the live-distance update now targets an explicit
+  `#i-dist` id instead of assuming Distance is the first `<dd>`.
+
+Verified via probe: card closes on filter-out; synthetic double-click cycled
+Sirius B → Sirius A. ?v=6. (Side note: the preview server had died over the
+weekend — first probe "failures" were just 000s from a dead port.)
+
 ## 2026-07-10 — Census completion + review fixes
 
 A review pass found the catalogue was the *well-known* 5 pc members, not the

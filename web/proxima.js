@@ -225,7 +225,7 @@ function setTime(t) {
       `nearest: <b>${bestName}</b> · ${bestD.toFixed(2)} ly`;
   // keep the selected star's live distance current
   if (selected) {
-    const dd = document.querySelector("#i-stats dd");
+    const dd = document.getElementById("i-dist");
     if (dd && selected.data.name !== "Sun") {
       const d = selected.pos.length();
       dd.textContent = `${d.toFixed(2)} ly · ${(d / 3.26156).toFixed(2)} pc`;
@@ -414,7 +414,16 @@ renderer.domElement.addEventListener("pointerup", e => {
   mouse.y = -(e.clientY / innerHeight) * 2 + 1;
   ray.setFromCamera(mouse, camera);
   const hits = ray.intersectObjects(objects.filter(o => o.visible !== false).map(o => o.sprite));
-  if (hits.length) select(hits[0].object.userData.obj);
+  if (!hits.length) return;
+  // unique objects in ray order; clicking a star that's already selected
+  // cycles to the next one under the cursor (close binaries overlap)
+  const seen = new Set(), ordered = [];
+  for (const h of hits) {
+    const ob = h.object.userData.obj;
+    if (!seen.has(ob)) { seen.add(ob); ordered.push(ob); }
+  }
+  const idx = ordered.indexOf(selected);
+  select(ordered[(idx + 1) % ordered.length]);
 });
 
 // camera easing targets
@@ -444,7 +453,7 @@ function showInfo(s) {
   const disc = (s.discovered === "—" || s.discovered === "antiquity")
     ? (s.discovered === "—" ? "—" : "known since antiquity") : s.discovered;
   const stats = [
-    ["Distance", s.name === "Sun" ? "0" : `${s.dist_ly.toFixed(2)} ly · ${s.dist_pc} pc`],
+    ["Distance", s.name === "Sun" ? "0" : `${s.dist_ly.toFixed(2)} ly · ${s.dist_pc} pc`, "i-dist"],
     ["System", s.system],
     ["Spectral type", s.spectral],
     ["Mass", `${s.mass} M☉`],
@@ -453,7 +462,7 @@ function showInfo(s) {
     ["Catalogued", disc],
   ];
   document.getElementById("i-stats").innerHTML =
-    stats.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+    stats.map(([k, v, id]) => `<dt>${k}</dt><dd${id ? ` id="${id}"` : ""}>${v}</dd>`).join("");
 
   const pl = document.getElementById("i-planets");
   pl.innerHTML = s.planet_names && s.planet_names.length
@@ -633,6 +642,9 @@ function applyFilter() {
     if (o.arrow) o.arrow.visible = state.paths && pass;
   }
   if (trailGroup) trailGroup.visible = state.paths;
+  // a selection that just got filtered out shouldn't linger as a ghost ring
+  if (selected && !passesFilter(selected.data))
+    document.getElementById("info-close").click();
 }
 
 // --- hash deep-link --------------------------------------------------------

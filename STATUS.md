@@ -1,7 +1,7 @@
 # STATUS — Project Proxima
 
 State: 🚀 SHIPPED — LIVE at mikebertin.github.io/proxima
-Last action: 2026-07-10 — Census completion + review fixes: +13 objects to the full RECONS 5 pc sample (64 total; GJ 1002's two temperate Earths, Gliese 440 WD, ultracool tail), nearest-readout filter bug fixed, 🌟 favicon, Esc/arrow-key controls. 25 hosts / 59 planets / 39 hints; ?v=5.
+Last action: 2026-07-13 — Final review nits fixed: filtered-out selections close the card, clicks cycle through overlapping close binaries (Sirius A↔B), live-distance update uses an explicit #i-dist id. ?v=6. (Census 64 objects / 25 hosts / 59 planets / 39 hints since 07-10.)
 Next action: None — project complete. (Optional future: candidate-planet refresh as new discoveries land; bump ?v= on any js/json change.)
 Blocked by: Nothing.
 Next milestone: —
