@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Proxima — build the local stellar-neighbourhood catalogue.
+Proxima: build the local stellar-neighbourhood catalogue.
 
 Curated table of every stellar (and notable sub-stellar) object within ~5 pc
 (~16.4 ly) of the Sun, sourced from the RECONS / Gliese census as tabulated on
 Wikipedia's "List of nearest stars" (astrometry cross-checked 2026-07-04).
 
-Each row carries the *observed* quantities — RA, Dec, distance, spectral type,
-mass — plus derived display fields (colour, radius) and known-planet counts.
+Each row carries the *observed* quantities (RA, Dec, distance, spectral type,
+mass) plus derived display fields (colour, radius) and known-planet counts.
 We convert equatorial coordinates to a right-handed Cartesian frame in
 light-years (X → vernal equinox, Y → RA 6h in the equatorial plane, Z → north
 celestial pole) so the web viewer can plot real 3D positions.
@@ -69,11 +69,11 @@ S = []
 def star(**kw):
     S.append(kw)
 
-# The Sun — anchor at the origin.
+# The Sun: anchor at the origin.
 star(name="Sun", other="Sol", ra=(0,0,0), dec=(1,0,0,0), dist_ly=0.0,
      spectral="G2V", mass=1.0, radius=1.0, planets=8,
      planet_names=["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"],
-     discovered="—", system="Sun", note="Home. The reference point for everything here.")
+     discovered="–", system="Sun", note="Home. The reference point for everything here.")
 
 # Alpha Centauri system + Proxima (nearest stars).
 star(name="Proxima Centauri", other="Alpha Cen C", ra=(14,29,43.0), dec=(-1,62,40,46),
@@ -94,7 +94,7 @@ star(name="Barnard's Star", other="", ra=(17,57,48.5), dec=(1,4,41,36),
      dist_ly=5.9629, spectral="M4.0Ve", mass=0.144, radius=0.19, planets=4,
      planet_names=["Barnard d","Barnard b","Barnard c","Barnard e"],
      discovered=1916, system="Barnard's Star",
-     note="Highest proper motion of any known star. Four sub-Earth planets confirmed 2024–25 — all packed inside a 7-day orbit.")
+     note="Highest proper motion of any known star. Four sub-Earth planets confirmed 2024–25, all packed inside a 7-day orbit.")
 
 star(name="Luhman 16 A", other="WISE 1049-5319 A", ra=(10,49,18.9), dec=(-1,53,19,10),
      dist_ly=6.5102, spectral="L7.5", mass=0.032, radius=0.10, planets=0,
@@ -103,7 +103,7 @@ star(name="Luhman 16 A", other="WISE 1049-5319 A", ra=(10,49,18.9), dec=(-1,53,1
 star(name="Luhman 16 B", other="WISE 1049-5319 B", ra=(10,49,18.9), dec=(-1,53,19,10),
      dist_ly=6.5102, spectral="T0.5", mass=0.027, radius=0.10, planets=0,
      planet_names=[], discovered=2013, system="Luhman 16",
-     note="Shows weather — patchy clouds rotating in and out of view.")
+     note="Shows weather: patchy clouds rotating in and out of view.")
 
 star(name="WISE 0855-0714", other="", ra=(8,55,10.8), dec=(-1,7,14,43),
      dist_ly=7.43, spectral="Y4", mass=0.007, radius=0.09, planets=0,
@@ -127,7 +127,7 @@ star(name="Sirius A", other="Alpha Canis Majoris", ra=(6,45,8.9), dec=(-1,16,42,
 star(name="Sirius B", other="", ra=(6,45,8.9), dec=(-1,16,42,58),
      dist_ly=8.7094, spectral="DA2", mass=1.018, radius=0.0084, planets=0,
      planet_names=[], discovered=1862, system="Sirius",
-     note="Nearest white dwarf — a Sun's-worth of mass in an Earth-sized sphere.")
+     note="Nearest white dwarf: a Sun's-worth of mass in an Earth-sized sphere.")
 
 star(name="Gliese 65 A", other="BL Ceti / Luyten 726-8 A", ra=(1,39,1.3), dec=(-1,17,57,1),
      dist_ly=8.770, spectral="M5.5Ve", mass=0.102, radius=0.14, planets=0,
@@ -136,7 +136,7 @@ star(name="Gliese 65 A", other="BL Ceti / Luyten 726-8 A", ra=(1,39,1.3), dec=(-
 star(name="Gliese 65 B", other="UV Ceti", ra=(1,39,1.3), dec=(-1,17,57,1),
      dist_ly=8.770, spectral="M6.0Ve", mass=0.100, radius=0.14, planets=0,
      planet_names=[], discovered=1948, system="Gliese 65",
-     note="The prototype UV Ceti flare star — brightens dramatically in minutes.")
+     note="The prototype UV Ceti flare star. It brightens dramatically in minutes.")
 
 star(name="Ross 154", other="V1216 Sagittarii", ra=(18,49,49.4), dec=(-1,23,50,10),
      dist_ly=9.7063, spectral="M3.5Ve", mass=0.17, radius=0.24, planets=0,
@@ -237,7 +237,7 @@ star(name="Teegarden's Star", other="", ra=(2,53,0.9), dec=(1,16,52,53),
 star(name="Kapteyn's Star", other="", ra=(5,11,40.6), dec=(-1,45,1,6),
      dist_ly=12.8308, spectral="M1.5VI", mass=0.281, radius=0.29, planets=1,
      planet_names=["Kapteyn b (disputed)"], discovered=1898, system="Kapteyn's Star",
-     note="A halo star from an ancient, disrupted dwarf galaxy — orbiting the wrong way round the Milky Way.")
+     note="A halo star from an ancient, disrupted dwarf galaxy, orbiting the wrong way round the Milky Way.")
 
 star(name="Lacaille 8760", other="AX Microscopii", ra=(21,17,15.3), dec=(-1,38,52,3),
      dist_ly=12.9472, spectral="M0.0V", mass=0.60, radius=0.51, planets=0,
@@ -293,7 +293,7 @@ star(name="Gliese 876", other="", ra=(22,53,16.7), dec=(-1,14,15,49),
 star(name="Gliese 832", other="", ra=(21,33,34.0), dec=(-1,49,0,32),
      dist_ly=16.2005, spectral="M1.5V", mass=0.45, radius=0.48, planets=2,
      planet_names=["Gliese 832 b","Gliese 832 c"], discovered=1900, system="Gliese 832",
-     note="A Jupiter analogue plus a super-Earth — a scaled-down Solar System.")
+     note="A Jupiter analogue plus a super-Earth: a scaled-down Solar System.")
 
 star(name="40 Eridani A", other="Keid", ra=(4,15,16.3), dec=(-1,7,39,10),
      dist_ly=16.333, spectral="K0.5V", mass=0.84, radius=0.81, planets=1,
@@ -314,12 +314,12 @@ star(name="40 Eridani C", other="", ra=(4,15,16.3), dec=(-1,7,39,10),
 # conservative-to-optimistic definitions, not a claim of habitability.
 PLANETS = {
     "Sun": [
-        ("Mercury", 0.39, 0.055, "—", False, False),
-        ("Venus", 0.72, 0.815, "—", False, False),
-        ("Earth", 1.0, 1.0, "—", True, False),
-        ("Mars", 1.52, 0.107, "—", True, False),
-        ("Jupiter", 5.2, 318, "—", False, False),
-        ("Saturn", 9.54, 95, "—", False, False),
+        ("Mercury", 0.39, 0.055, "–", False, False),
+        ("Venus", 0.72, 0.815, "–", False, False),
+        ("Earth", 1.0, 1.0, "–", True, False),
+        ("Mars", 1.52, 0.107, "–", True, False),
+        ("Jupiter", 5.2, 318, "–", False, False),
+        ("Saturn", 9.54, 95, "–", False, False),
         ("Uranus", 19.2, 14.5, 1781, False, False),
         ("Neptune", 30.1, 17.1, 1846, False, False),
     ],
@@ -409,56 +409,56 @@ PLANETS = {
 }
 
 # --- "why none found" hints for zero-planet stars ---------------------------
-# No confirmed planet almost never means "no planets" — it means detection is
+# No confirmed planet almost never means "no planets"; it means detection is
 # hard for this star. One line per star saying why (activity, binarity, stellar
 # type, or simply survey depth), shown on the info card in place of the strip.
 NO_PLANET_HINT = {
-    "Rigil Kentaurus": "Close binary — companion glare and the A–B orbit swamp small RV signals; decades of searching, candidates but no confirmation yet.",
-    "Toliman": "Close binary with Alpha Cen A — the companion's light and dynamics defeat current searches.",
-    "Luhman 16 A": "Brown dwarf — far too faint for precision radial velocity; only astrometry or microlensing could reveal planets here.",
-    "Luhman 16 B": "Brown dwarf — far too faint for precision radial velocity searches.",
-    "WISE 0855-0714": "A rogue sub-brown dwarf at ~250 K — beyond the reach of any current planet-hunting method.",
-    "Sirius A": "Hot, fast-spinning A star — few, smeared spectral lines ruin RV precision, and the white-dwarf companion adds glare.",
-    "Sirius B": "White dwarf — any inner planets were engulfed or destroyed when the progenitor swelled into a red giant.",
-    "Gliese 65 A": "Flare-star binary — constant magnetic jitter drowns the signal of any small planet.",
-    "Gliese 65 B": "The prototype flare star — activity noise overwhelms radial-velocity planet hunting.",
-    "Ross 154": "Young, active flare star — starspot jitter masks small-planet signals.",
-    "Ross 248": "Active flare star — magnetic noise sits above the signal any small planet would make.",
-    "EZ Aquarii A": "Tight flare-star triple — three-body dynamics plus activity noise defeat precision searches.",
-    "61 Cygni A": "Surveyed for two centuries — binary dynamics complicate searches and nothing has cleared the threshold; small, cool planets could easily hide.",
+    "Rigil Kentaurus": "Close binary. Companion glare and the A–B orbit swamp small RV signals; decades of searching, candidates but no confirmation yet.",
+    "Toliman": "Close binary with Alpha Cen A. The companion's light and dynamics defeat current searches.",
+    "Luhman 16 A": "Brown dwarf, far too faint for precision radial velocity; only astrometry or microlensing could reveal planets here.",
+    "Luhman 16 B": "Brown dwarf, far too faint for precision radial velocity searches.",
+    "WISE 0855-0714": "A rogue sub-brown dwarf at ~250 K, beyond the reach of any current planet-hunting method.",
+    "Sirius A": "Hot, fast-spinning A star. Few, smeared spectral lines ruin RV precision, and the white-dwarf companion adds glare.",
+    "Sirius B": "White dwarf. Any inner planets were engulfed or destroyed when the progenitor swelled into a red giant.",
+    "Gliese 65 A": "Flare-star binary. Constant magnetic jitter drowns the signal of any small planet.",
+    "Gliese 65 B": "The prototype flare star. Activity noise overwhelms radial-velocity planet hunting.",
+    "Ross 154": "Young, active flare star. Starspot jitter masks small-planet signals.",
+    "Ross 248": "Active flare star. Magnetic noise sits above the signal any small planet would make.",
+    "EZ Aquarii A": "Tight flare-star triple. Three-body dynamics plus activity noise defeat precision searches.",
+    "61 Cygni A": "Surveyed for two centuries. Binary dynamics complicate searches and nothing has cleared the threshold; small, cool planets could easily hide.",
     "61 Cygni B": "As with its partner: binary complications, long history of null results, room left for small planets.",
-    "Procyon A": "Hot F-type subgiant — pulsations and broadened lines limit RV precision; the white-dwarf companion adds glare.",
-    "Procyon B": "White dwarf — the inner planetary system did not survive the giant phase.",
-    "Struve 2398 A": "M-dwarf binary — activity signals so far, no confirmed planet.",
-    "Struve 2398 B": "M-dwarf binary — flare activity and the companion complicate searches.",
-    "Groombridge 34 B": "Flare star — activity noise; note its quieter primary does host a planet.",
-    "DX Cancri": "Ultracool flare star — extremely faint and magnetically noisy, barely surveyable by RV.",
-    "Kruger 60 A": "Close flare-star binary — activity plus binary dynamics hide small planets.",
-    "Kruger 60 B": "Close flare-star binary — the companion's orbit and flares defeat searches.",
-    "Lacaille 8760": "Bright but magnetically active M dwarf — flare jitter; surveys so far empty.",
-    "Gliese 1": "Quiet and well surveyed — nothing above the detection threshold yet; smaller or more distant planets could remain.",
-    "GJ 1245 A": "Flare-star triple — activity and two companions defeat precision searches.",
-    "Van Maanen's Star": "White dwarf with a metal-polluted atmosphere — forensic debris of shredded planetary material. It had planets; it ate them.",
-    "40 Eridani B": "White dwarf — close-in planets were engulfed when the progenitor became a red giant.",
-    "40 Eridani C": "Red-dwarf flare star — activity noise masks small planets; its K-dwarf primary is the promising target.",
-    "SCR 1845-6357 A": "Ultracool dwarf found only in 2004 — too faint for the precision RV surveys that find small planets.",
-    "SCR 1845-6357 B": "A T-type brown dwarf — far beyond the reach of planet searches.",
-    "DENIS J1048-3956": "Ultracool dwarf at the hydrogen-burning limit — too faint for precision RV.",
-    "UGPS J0722-0540": "A ~500 K T dwarf — no current method can search it for planets.",
-    "Wolf 424 A": "Tight flare-star binary — activity noise plus a close companion defeat searches.",
-    "Wolf 424 B": "Tight flare-star binary — same story as its partner.",
-    "Gliese 440": "White dwarf — inner planets would not have survived the red-giant phase.",
-    "LHS 288": "Faint and little surveyed — no deep RV campaign published yet.",
+    "Procyon A": "Hot F-type subgiant. Pulsations and broadened lines limit RV precision; the white-dwarf companion adds glare.",
+    "Procyon B": "White dwarf. The inner planetary system did not survive the giant phase.",
+    "Struve 2398 A": "M-dwarf binary: activity signals so far, no confirmed planet.",
+    "Struve 2398 B": "M-dwarf binary. Flare activity and the companion complicate searches.",
+    "Groombridge 34 B": "Flare star with activity noise. Note its quieter primary does host a planet.",
+    "DX Cancri": "Ultracool flare star: extremely faint and magnetically noisy, barely surveyable by RV.",
+    "Kruger 60 A": "Close flare-star binary. Activity plus binary dynamics hide small planets.",
+    "Kruger 60 B": "Close flare-star binary. The companion's orbit and flares defeat searches.",
+    "Lacaille 8760": "Bright but magnetically active M dwarf. Flare jitter; surveys so far empty.",
+    "Gliese 1": "Quiet and well surveyed, but nothing above the detection threshold yet; smaller or more distant planets could remain.",
+    "GJ 1245 A": "Flare-star triple. Activity and two companions defeat precision searches.",
+    "Van Maanen's Star": "White dwarf with a metal-polluted atmosphere: forensic debris of shredded planetary material. It had planets; it ate them.",
+    "40 Eridani B": "White dwarf. Close-in planets were engulfed when the progenitor became a red giant.",
+    "40 Eridani C": "Red-dwarf flare star. Activity noise masks small planets; its K-dwarf primary is the promising target.",
+    "SCR 1845-6357 A": "Ultracool dwarf found only in 2004, too faint for the precision RV surveys that find small planets.",
+    "SCR 1845-6357 B": "A T-type brown dwarf, far beyond the reach of planet searches.",
+    "DENIS J1048-3956": "Ultracool dwarf at the hydrogen-burning limit, too faint for precision RV.",
+    "UGPS J0722-0540": "A ~500 K T dwarf. No current method can search it for planets.",
+    "Wolf 424 A": "Tight flare-star binary. Activity noise plus a close companion defeat searches.",
+    "Wolf 424 B": "Tight flare-star binary, same story as its partner.",
+    "Gliese 440": "White dwarf. Inner planets would not have survived the red-giant phase.",
+    "LHS 288": "Faint and little surveyed, with no deep RV campaign published yet.",
     "Gliese 412 A": "Under-surveyed M dwarf with a flare-star companion complicating long campaigns.",
-    "Gliese 412 B": "WX UMa is an extreme flare star — activity noise swamps any planet signal.",
-    "AD Leonis": "One of the most active flare stars known — a claimed planet (2020) was retracted as an activity artefact.",
+    "Gliese 412 B": "WX UMa is an extreme flare star. Activity noise swamps any planet signal.",
+    "AD Leonis": "One of the most active flare stars known. A claimed planet (2020) was retracted as an activity artefact.",
 }
 
 # --- kinematics: proper motion + radial velocity ---------------------------
 # Per object: (mu_RA*  [mas/yr, incl. cos-dec],  mu_Dec [mas/yr],  RV [km/s]).
 # RV negative = approaching. Values from standard Hipparcos/Gaia-era literature.
 # Companions inherit their primary's space motion. Where a value is genuinely
-# uncertain (some ultracool dwarfs), RV defaults to 0 — it only affects how the
+# uncertain (some ultracool dwarfs), RV defaults to 0; it only affects how the
 # line-of-sight distance evolves, not the on-sky streak.
 KINEMATICS = {
     "Sun": (0, 0, 0),
@@ -549,13 +549,13 @@ def velocity_ly_per_yr(ra_deg, dec_deg, dist_pc, pm_ra_mas, pm_dec_mas, rv_kms):
 
 # --- census completion (2026-07-10): the fainter tail of the 5 pc sample ----
 # Astrometry cross-checked against the Wikipedia/RECONS census. Note WISE
-# 1541-2250 was considered and excluded — its revised parallax puts it at
+# 1541-2250 was considered and excluded: its revised parallax puts it at
 # ~18.9 ly, outside the cutoff.
 
 star(name="SCR 1845-6357 A", other="", ra=(18,45,5.3), dec=(-1,63,57,48),
      dist_ly=13.0638, spectral="M8.5V", mass=0.07, radius=0.11, planets=0,
      planet_names=[], discovered=2004, system="SCR 1845-6357",
-     note="Missed until 2004 — hidden against the crowded southern Milky Way despite being one of our nearest neighbours.")
+     note="Missed until 2004, hidden against the crowded southern Milky Way despite being one of our nearest neighbours.")
 star(name="SCR 1845-6357 B", other="", ra=(18,45,2.6), dec=(-1,63,57,52),
      dist_ly=13.0638, spectral="T6", mass=0.03, radius=0.10, planets=0,
      planet_names=[], discovered=2006, system="SCR 1845-6357",
@@ -582,7 +582,7 @@ star(name="Wolf 424 B", other="", ra=(12,33,17.2), dec=(1,9,1,15),
 star(name="Gliese 440", other="LP 145-141", ra=(11,45,42.9), dec=(-1,64,50,29),
      dist_ly=15.1226, spectral="DQ6", mass=0.75, radius=0.011, planets=0,
      planet_names=[], discovered=1957, system="Gliese 440",
-     note="The fourth-nearest white dwarf — a carbon-atmosphere stellar remnant older than the Sun.")
+     note="The fourth-nearest white dwarf: a carbon-atmosphere stellar remnant older than the Sun.")
 
 star(name="LHS 288", other="Luyten 143-23", ra=(10,44,21.2), dec=(-1,61,12,36),
      dist_ly=15.7586, spectral="M5.5V", mass=0.11, radius=0.15, planets=0,
@@ -592,7 +592,7 @@ star(name="LHS 288", other="Luyten 143-23", ra=(10,44,21.2), dec=(-1,61,12,36),
 star(name="GJ 1002", other="", ra=(0,6,43.8), dec=(-1,7,32,22),
      dist_ly=15.806, spectral="M5.5V", mass=0.11, radius=0.14, planets=2,
      planet_names=["GJ 1002 b","GJ 1002 c"], discovered=1978, system="GJ 1002",
-     note="Quiet red dwarf with two temperate Earth-mass planets — one of the nearest potentially habitable systems (2022).")
+     note="Quiet red dwarf with two temperate Earth-mass planets, one of the nearest potentially habitable systems (2022).")
 
 star(name="Gliese 412 A", other="Lalande 21258", ra=(11,5,28.6), dec=(1,43,31,36),
      dist_ly=15.9969, spectral="M1.0V", mass=0.48, radius=0.39, planets=0,
@@ -606,7 +606,7 @@ star(name="Gliese 412 B", other="WX Ursae Majoris", ra=(11,5,30.4), dec=(1,43,31
 star(name="AD Leonis", other="GJ 388", ra=(10,19,36.4), dec=(1,19,52,10),
      dist_ly=16.1939, spectral="M3.0V", mass=0.41, radius=0.43, planets=0,
      planet_names=[], discovered=1949, system="AD Leonis",
-     note="One of the most active flare stars known — a favourite laboratory for stellar eruptions.")
+     note="One of the most active flare stars known, and a favourite laboratory for stellar eruptions.")
 
 star(name="Gliese 682", other="CD-44 11909", ra=(17,37,3.7), dec=(-1,44,19,9),
      dist_ly=16.3328, spectral="M4V", mass=0.27, radius=0.30, planets=2,
@@ -627,7 +627,7 @@ def process():
         key = (round(ra_deg, 4), round(dec_deg, 4), round(s["dist_ly"], 3))
         n = seen.get(key, 0)
         seen[key] = n + 1
-        if n:  # nth companion at identical coords — nudge ~0.03 ly so it renders distinctly
+        if n:  # nth companion at identical coords: nudge ~0.03 ly so it renders distinctly
             ang = n * 2.399963  # golden angle
             x += 0.035 * math.cos(ang)
             y += 0.035 * math.sin(ang)

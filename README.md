@@ -1,6 +1,6 @@
-# 🔷 Proxima — the Sun's stellar neighbourhood in 3D
+# 🔷 Proxima: the Sun's stellar neighbourhood in 3D
 
-> *A live, interactive map of every star within five parsecs of the Sun — where they are, what they're made of, and which ones have planets.*
+> *A live, interactive map of every star within five parsecs of the Sun: where they are, what they're made of and which ones have planets.*
 
 Sister project to [Orrery](https://mikebertin.github.io/orrery/) (the solar system
 in 3D). Where Orrery zooms *into* our system, Proxima zooms *out* to the ~65
@@ -8,31 +8,31 @@ nearest stellar objects, plotted from real astrometry, with the Milky Way plane
 and Galactic Centre for orientation. Vanilla JavaScript + Three.js; ships as a
 static site.
 
-**▶ Live: [mikebertin.github.io/proxima](https://mikebertin.github.io/proxima/)** —
-try [Tau Ceti's four planets](https://mikebertin.github.io/proxima/#Tau%20Ceti)
+**▶ Live: [mikebertin.github.io/proxima](https://mikebertin.github.io/proxima/)**.
+Try [Tau Ceti's four planets](https://mikebertin.github.io/proxima/#Tau%20Ceti)
 or scrub 36,000 years forward and watch Ross 248 become our nearest neighbour.
 
 ## Why "Proxima"
 
-*Proxima* is Latin for "nearest" — and Proxima Centauri is exactly that: the
+*Proxima* is Latin for "nearest", and Proxima Centauri is exactly that: the
 single nearest star to the Sun, a red dwarf 4.25 light-years away hiding a
 temperate rocky planet. A map of the Sun's nearest neighbours could hardly be
 called anything else.
 
 ## What This Is
 
-A rotatable, zoomable 3D star-map. Click any star to see its stats — **mass,
-colour (spectral type), size, distance, known planets, and when it entered the
+A rotatable, zoomable 3D star-map. Click any star to see its stats: **mass,
+colour (spectral type), size, distance, known planets and when it entered the
 catalogues.** The Sun sits at the origin; concentric 5 / 10 / 15 ly rings give a
 sense of scale; a faint Milky Way disc shows the galactic plane the whole
 neighbourhood is embedded in, with a signpost pointing 26,000 ly toward the
 Galactic Centre (Sgr A*).
 
-64 objects within ~5 pc (16.4 ly) — the complete RECONS census: 3 Sun-like
+64 objects within ~5 pc (16.4 ly), the complete RECONS census: 3 Sun-like
 stars, dozens of red dwarfs, four white dwarfs (Sirius B, Procyon B,
 Van Maanen's Star, Gliese 440), brown dwarfs from Luhman 16 down to ~500 K
-T dwarfs, and 25 planet-hosting systems (59 known planets) — from Proxima b to
-the four-world resonant chain of Gliese 876.
+T dwarfs and 25 planet-hosting systems (59 known planets). They run from Proxima b
+to the four-world resonant chain of Gliese 876.
 
 ## The data
 
@@ -75,23 +75,23 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 | 3 | Polish: OG image, mobile pass, soft 3D grid, trail direction arrows | ✅ 2026-07-10 |
 | 4 | Per-star "planets" mini-view (log-AU system strips, every known planet enriched) | ✅ 2026-07-10 |
 | 5 | Deploy to GitHub Pages (public repo, sister to Orrery) | ✅ 2026-07-10 |
-| 6 | Census completion — full RECONS 5 pc sample (64 objects), keyboard controls, favicon | ✅ 2026-07-10 |
+| 6 | Census completion: full RECONS 5 pc sample (64 objects), keyboard controls, favicon | ✅ 2026-07-10 |
 
 ## Controls
 
 - **drag** orbit · **scroll** zoom · **click** a star for its stat card
 - **Planetary-system strip** (on the stat card, for the 23 planet-hosts + Sun): each
-  planet plotted on a log-AU axis — dot size = mass class (rocky/Neptune/Jovian by
+  planet plotted on a log-AU axis. Dot size = mass class (rocky/Neptune/Jovian by
   colour), green ring = temperate orbit, dashed = disputed. Tap a dot for distance,
   mass and discovery year.
-- **"Why no planets found"** — every zero-planet star explains its own gap (flare-star
-  noise, binary glare, hot-star spectra, white-dwarf history, or plain survey depth),
+- **"Why no planets found"**: every zero-planet star explains its own gap (flare-star
+  noise, binary glare, hot-star spectra, white-dwarf history or plain survey depth),
   because no confirmed planet almost never means no planets.
 - **Time-scrub**: drag the slider (±80,000 yr) or hit play to watch the neighbourhood
-  rearrange under real proper motion — the "nearest star" readout updates live, and
+  rearrange under real proper motion. The "nearest star" readout updates live, and
   **motion trails** show each star's path. Watch **Ross 248** slide in to become our
   nearest neighbour ~36,000 years from now.
-- **Orient**: *galactic plane* (default — galactic north up, so the Milky Way reads flat
+- **Orient**: *galactic plane* (default, with galactic north up, so the Milky Way reads flat
   and the Galactic Centre sits in the background) or *equatorial* (RA/Dec frame). Orbiting
   keeps whichever plane you chose level.
 - **Show**: labels · distance rings · galaxy · planet-hosts (highlights the 23 hosts) ·
@@ -104,9 +104,13 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 
 - Companion stars sharing a line of sight (Sirius A/B, Alpha Cen A/B, 40 Eri A/B/C…)
   are nudged a few hundredths of a light-year apart so both render and remain clickable.
-- Star *display* sizes are scaled for legibility, not to true physical scale — at real
+- Star *display* sizes are scaled for legibility, not to true physical scale. At real
   scale every star would be an invisible point. Relative sizing (dwarf vs. giant vs.
   white dwarf) is preserved.
 - Deploys to GitHub Pages via `.github/workflows/pages.yml` (serves the `web/` folder).
 
 > *Any quotes used in this project must be real, sourced attributions. No invented quotes.*
+
+---
+
+<sub>Part of a collection of interactive builds · [mikebertin.github.io](https://mikebertin.github.io/)</sub>

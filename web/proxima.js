@@ -1,4 +1,4 @@
-// Proxima — the Sun's stellar neighbourhood in 3D.
+// Proxima: the Sun's stellar neighbourhood in 3D.
 // Vanilla + Three.js. Reads web/data/stars.json (real astrometry) and plots
 // every star within ~5 pc as a clickable, labelled object, with the Milky Way
 // plane and Galactic Centre for orientation. Sister project to Orrery.
@@ -14,6 +14,8 @@ if (OG_MODE) document.body.classList.add("og");
 const panelToggle = document.getElementById("panel-toggle");
 panelToggle.onclick = () => document.body.classList.toggle("panel-open");
 const isMobile = () => matchMedia("(max-width:640px)").matches;
+// reduced motion: camera jumps instead of flying, no selection pulse, no drag inertia
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
 
 const LY = 1;                 // 1 light-year = 1 scene unit
 const GC_MARKER_DIST = 380;   // where we park the Galactic-Centre signpost (ly)
@@ -36,11 +38,12 @@ const camera = new THREE.PerspectiveCamera(50, 1, 0.05, 20000);
 camera.position.set(14, 10, 22);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
+controls.enableDamping = !reduceMotion.matches;
 controls.dampingFactor = 0.08;
 controls.rotateSpeed = 0.7;
 controls.minDistance = 0.5;
 controls.maxDistance = 900;
+reduceMotion.addEventListener?.("change", () => { controls.enableDamping = !reduceMotion.matches; });
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.9));
 
@@ -186,7 +189,7 @@ function buildTrails() {
       { color: new THREE.Color(o.data.colour), transparent: true, opacity: 0.28 }));
     o.trail = line;
     trailGroup.add(line);
-    // arrowhead at the future end — direction of travel
+    // arrowhead at the future end shows the direction of travel
     const cone = new THREE.Mesh(
       new THREE.ConeGeometry(0.22, 0.75, 10),
       new THREE.MeshBasicMaterial(
@@ -213,7 +216,7 @@ function setTime(t) {
     o.pos.copy(o.pos0).addScaledVector(o.vel, t);
     o.sprite.position.copy(o.pos);
     if (o.label) o.label.position.copy(o.pos);
-    // nearest is a fact about the sky — computed over ALL stars, filters or not
+    // nearest is a fact about the sky, so it is computed over ALL stars, filters or not
     if (o.data.name !== "Sun") {
       const d = o.pos.length();
       if (d < bestD) { bestD = d; bestName = o.data.name; }
@@ -450,8 +453,8 @@ function showInfo(s) {
   document.getElementById("i-sub").textContent =
     (s.other ? s.other + " · " : "") + s.spectral + " · " + s.kind;
 
-  const disc = (s.discovered === "—" || s.discovered === "antiquity")
-    ? (s.discovered === "—" ? "—" : "known since antiquity") : s.discovered;
+  const disc = (s.discovered === "–" || s.discovered === "antiquity")
+    ? (s.discovered === "–" ? "–" : "known since antiquity") : s.discovered;
   const stats = [
     ["Distance", s.name === "Sun" ? "0" : `${s.dist_ly.toFixed(2)} ly · ${s.dist_pc} pc`, "i-dist"],
     ["System", s.system],
@@ -519,7 +522,7 @@ function renderSystemStrip(s) {
     c.addEventListener("click", () => {
       const p = pd[+c.dataset.i];
       line.innerHTML = `<b>${p.name}</b> · ${p.a} AU · ${fmtM(p.m)}` +
-        (p.yr === "—" ? "" : ` · ${p.yr}`) +
+        (p.yr === "–" ? "" : ` · ${p.yr}`) +
         (p.hz ? ` · <span style="color:#7ce38b">temperate</span>` : "") +
         (p.disputed ? ` · <span style="color:#e0a35c">disputed</span>` : "");
     });
@@ -697,8 +700,9 @@ function animate() {
 
   // ease camera toward a focused star
   if (camTarget && focusTarget) {
-    controls.target.lerp(focusTarget, 0.09);
-    camera.position.lerp(camTarget, 0.09);
+    const k = reduceMotion.matches ? 1 : 0.09;
+    controls.target.lerp(focusTarget, k);
+    camera.position.lerp(camTarget, k);
     if (camera.position.distanceTo(camTarget) < 0.05) { camTarget = focusTarget = null; }
   }
 
@@ -706,7 +710,7 @@ function animate() {
   if (selected) {
     selRing.position.copy(selected.pos);
     selRing.quaternion.copy(camera.quaternion);
-    const s = displaySize(selected.data) * (1.9 + Math.sin(t * 3) * 0.12);
+    const s = displaySize(selected.data) * (1.9 + (reduceMotion.matches ? 0 : Math.sin(t * 3) * 0.12));
     selRing.scale.setScalar(s);
   }
   if (sunRing) sunRing.quaternion.copy(camera.quaternion);

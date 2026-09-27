@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Proxima — the Sun's stellar neighbourhood in 3D</title>
+<title>Proxima · the Sun's stellar neighbourhood in 3D</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌟</text></svg>" />
 <meta name="description" content="An interactive 3D map of every star within ~5 parsecs of the Sun: mass, colour, size, distance, planets and more." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mikebertin.github.io/proxima/" />
-<meta property="og:title" content="Proxima — the Sun's stellar neighbourhood in 3D" />
+<meta property="og:title" content="Proxima · the Sun's stellar neighbourhood in 3D" />
 <meta property="og:description" content="Every star within 5 parsecs of the Sun, mapped in real 3D. Scrub ±80,000 years of proper motion and watch Ross 248 become our nearest neighbour." />
 <meta property="og:image" content="https://mikebertin.github.io/proxima/og.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -99,7 +99,7 @@
     font-size:13px;padding:7px 11px;border-radius:9px}
 
   /* --- mobile pass ------------------------------------------------------- */
-  /* mid widths: time bar would collide with the corner panels — hide the hint
+  /* mid widths: time bar would collide with the corner panels, so hide the hint
      and dock the bar between the legend and the right edge instead of centring */
   @media (max-width:1120px){
     #hint{display:none}
@@ -126,6 +126,17 @@
     button{padding:6px 9px}   /* bigger touch targets */
   }
 
+  /* hub footer line, at the foot of the controls panel */
+  .hub{display:flex;align-items:center;gap:6px;padding-top:9px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10px;color:var(--dim)}
+  .hub a{color:var(--dim);text-decoration:none}
+  .hub a:hover{color:var(--accent);text-decoration:underline}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+      transition-duration:.01ms!important;scroll-behavior:auto!important}
+  }
+
   /* --- OG-capture mode (?og): hide chrome, keep the map + wordmark ------- */
   body.og .panel,body.og #hint,body.og #panel-toggle{display:none!important}
   body.og .brand{top:22px;left:26px}
@@ -138,7 +149,7 @@
 
 <div class="brand">
   <h1>Proxima</h1>
-  <p>the Sun's stellar neighbourhood · <span class="cnt" id="count">—</span> objects within 5 pc</p>
+  <p>the Sun's stellar neighbourhood · <span class="cnt" id="count">–</span> objects within 5 pc</p>
 </div>
 
 <button id="panel-toggle" title="controls">☰</button>
@@ -175,12 +186,13 @@
       <button id="f-bright">bright</button>
     </div>
   </div>
+  <span class="hub"><img src="badge.svg" alt="" width="13" height="16"> <a href="https://mikebertin.github.io/">More builds by Mike Bertin</a></span>
 </div>
 
 <div id="info" class="panel">
   <button class="close" id="info-close">×</button>
-  <h2 id="i-name">—</h2>
-  <div class="sub" id="i-sub">—</div>
+  <h2 id="i-name">–</h2>
+  <div class="sub" id="i-sub">–</div>
   <dl class="stats" id="i-stats"></dl>
   <div class="planets" id="i-planets"></div>
   <div id="i-system"></div>
@@ -221,6 +233,6 @@
   }
 }
 </script>
-<script type="module" src="proxima.js?v=6"></script>
+<script type="module" src="proxima.js?v=7"></script>
 </body>
 </html>

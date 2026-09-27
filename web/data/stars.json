@@ -43,14 +43,14 @@
     "Uranus",
     "Neptune"
    ],
-   "discovered": "\u2014",
+   "discovered": "\u2013",
    "note": "Home. The reference point for everything here.",
    "planet_data": [
     {
      "name": "Mercury",
      "a": 0.39,
      "m": 0.055,
-     "yr": "\u2014",
+     "yr": "\u2013",
      "hz": false,
      "disputed": false
     },
@@ -58,7 +58,7 @@
      "name": "Venus",
      "a": 0.72,
      "m": 0.815,
-     "yr": "\u2014",
+     "yr": "\u2013",
      "hz": false,
      "disputed": false
     },
@@ -66,7 +66,7 @@
      "name": "Earth",
      "a": 1.0,
      "m": 1.0,
-     "yr": "\u2014",
+     "yr": "\u2013",
      "hz": true,
      "disputed": false
     },
@@ -74,7 +74,7 @@
      "name": "Mars",
      "a": 1.52,
      "m": 0.107,
-     "yr": "\u2014",
+     "yr": "\u2013",
      "hz": true,
      "disputed": false
     },
@@ -82,7 +82,7 @@
      "name": "Jupiter",
      "a": 5.2,
      "m": 318,
-     "yr": "\u2014",
+     "yr": "\u2013",
      "hz": false,
      "disputed": false
     },
@@ -90,7 +90,7 @@
      "name": "Saturn",
      "a": 9.54,
      "m": 95,
-     "yr": "\u2014",
+     "yr": "\u2013",
      "hz": false,
      "disputed": false
     },
@@ -202,7 +202,7 @@
    "vx": -3.06128e-05,
    "vy": 7.34545e-05,
    "vz": 7.19946e-05,
-   "no_planet_hint": "Close binary \u2014 companion glare and the A\u2013B orbit swamp small RV signals; decades of searching, candidates but no confirmation yet."
+   "no_planet_hint": "Close binary. Companion glare and the A\u2013B orbit swamp small RV signals; decades of searching, candidates but no confirmation yet."
   },
   {
    "name": "Toliman",
@@ -230,7 +230,7 @@
    "vx": -3.06085e-05,
    "vy": 7.34549e-05,
    "vz": 7.1996e-05,
-   "no_planet_hint": "Close binary with Alpha Cen A \u2014 the companion's light and dynamics defeat current searches."
+   "no_planet_hint": "Close binary with Alpha Cen A. The companion's light and dynamics defeat current searches."
   },
   {
    "name": "Barnard's Star",
@@ -253,7 +253,7 @@
     "Barnard e"
    ],
    "discovered": 1916,
-   "note": "Highest proper motion of any known star. Four sub-Earth planets confirmed 2024\u201325 \u2014 all packed inside a 7-day orbit.",
+   "note": "Highest proper motion of any known star. Four sub-Earth planets confirmed 2024\u201325, all packed inside a 7-day orbit.",
    "planet_data": [
     {
      "name": "Barnard d",
@@ -323,7 +323,7 @@
    "vx": 1.78283e-05,
    "vy": 8.58126e-05,
    "vz": 6.7497e-06,
-   "no_planet_hint": "Brown dwarf \u2014 far too faint for precision radial velocity; only astrometry or microlensing could reveal planets here."
+   "no_planet_hint": "Brown dwarf, far too faint for precision radial velocity; only astrometry or microlensing could reveal planets here."
   },
   {
    "name": "Luhman 16 B",
@@ -341,7 +341,7 @@
    "planets": 0,
    "planet_names": [],
    "discovered": 2013,
-   "note": "Shows weather \u2014 patchy clouds rotating in and out of view.",
+   "note": "Shows weather: patchy clouds rotating in and out of view.",
    "planet_data": [],
    "pm": 2785.1,
    "rv": 0,
@@ -351,7 +351,7 @@
    "vx": 1.78283e-05,
    "vy": 8.58126e-05,
    "vz": 6.7497e-06,
-   "no_planet_hint": "Brown dwarf \u2014 far too faint for precision radial velocity searches."
+   "no_planet_hint": "Brown dwarf, far too faint for precision radial velocity searches."
   },
   {
    "name": "WISE 0855-0714",
@@ -379,7 +379,7 @@
    "vx": 0.0002089515,
    "vy": 0.0002045465,
    "vz": 2.38704e-05,
-   "no_planet_hint": "A rogue sub-brown dwarf at ~250 K \u2014 beyond the reach of any current planet-hunting method."
+   "no_planet_hint": "A rogue sub-brown dwarf at ~250 K, beyond the reach of any current planet-hunting method."
   },
   {
    "name": "Wolf 359",
@@ -501,7 +501,7 @@
    "vx": 2.89548e-05,
    "vy": -2.72846e-05,
    "vz": -4.41813e-05,
-   "no_planet_hint": "Hot, fast-spinning A star \u2014 few, smeared spectral lines ruin RV precision, and the white-dwarf companion adds glare."
+   "no_planet_hint": "Hot, fast-spinning A star. Few, smeared spectral lines ruin RV precision, and the white-dwarf companion adds glare."
   },
   {
    "name": "Sirius B",
@@ -519,7 +519,7 @@
    "planets": 0,
    "planet_names": [],
    "discovered": 1862,
-   "note": "Nearest white dwarf \u2014 a Sun's-worth of mass in an Earth-sized sphere.",
+   "note": "Nearest white dwarf: a Sun's-worth of mass in an Earth-sized sphere.",
    "planet_data": [],
    "pm": 1339.3,
    "rv": -5.5,
@@ -529,7 +529,7 @@
    "vx": 2.89548e-05,
    "vy": -2.72846e-05,
    "vz": -4.41813e-05,
-   "no_planet_hint": "White dwarf \u2014 any inner planets were engulfed or destroyed when the progenitor swelled into a red giant."
+   "no_planet_hint": "White dwarf. Any inner planets were engulfed or destroyed when the progenitor swelled into a red giant."
   },
   {
    "name": "Gliese 65 A",
@@ -557,7 +557,7 @@
    "vx": 3.03351e-05,
    "vy": 0.0001063189,
    "vz": -9.14157e-05,
-   "no_planet_hint": "Flare-star binary \u2014 constant magnetic jitter drowns the signal of any small planet."
+   "no_planet_hint": "Flare-star binary. Constant magnetic jitter drowns the signal of any small planet."
   },
   {
    "name": "Gliese 65 B",
@@ -575,7 +575,7 @@
    "planets": 0,
    "planet_names": [],
    "discovered": 1948,
-   "note": "The prototype UV Ceti flare star \u2014 brightens dramatically in minutes.",
+   "note": "The prototype UV Ceti flare star. It brightens dramatically in minutes.",
    "planet_data": [],
    "pm": 2491.6,
    "rv": 29,
@@ -585,7 +585,7 @@
    "vx": 3.03351e-05,
    "vy": 0.0001063189,
    "vz": -9.14157e-05,
-   "no_planet_hint": "The prototype flare star \u2014 activity noise overwhelms radial-velocity planet hunting."
+   "no_planet_hint": "The prototype flare star. Activity noise overwhelms radial-velocity planet hunting."
   },
   {
    "name": "Ross 154",
@@ -613,7 +613,7 @@
    "vx": 2.58502e-05,
    "vy": 2.19479e-05,
    "vz": -2.8724e-06,
-   "no_planet_hint": "Young, active flare star \u2014 starspot jitter masks small-planet signals."
+   "no_planet_hint": "Young, active flare star. Starspot jitter masks small-planet signals."
   },
   {
    "name": "Ross 248",
@@ -641,7 +641,7 @@
    "vx": -0.0001303264,
    "vy": 1.59208e-05,
    "vz": -0.0002383556,
-   "no_planet_hint": "Active flare star \u2014 magnetic noise sits above the signal any small planet would make."
+   "no_planet_hint": "Active flare star. Magnetic noise sits above the signal any small planet would make."
   },
   {
    "name": "Epsilon Eridani",
@@ -792,7 +792,7 @@
    "vx": -7.25097e-05,
    "vy": -9.35573e-05,
    "vz": -0.0001295097,
-   "no_planet_hint": "Tight flare-star triple \u2014 three-body dynamics plus activity noise defeat precision searches."
+   "no_planet_hint": "Tight flare-star triple. Three-body dynamics plus activity noise defeat precision searches."
   },
   {
    "name": "61 Cygni A",
@@ -820,7 +820,7 @@
    "vx": -4.61979e-05,
    "vy": 0.0003573478,
    "vz": 3.4e-06,
-   "no_planet_hint": "Surveyed for two centuries \u2014 binary dynamics complicate searches and nothing has cleared the threshold; small, cool planets could easily hide."
+   "no_planet_hint": "Surveyed for two centuries. Binary dynamics complicate searches and nothing has cleared the threshold; small, cool planets could easily hide."
   },
   {
    "name": "61 Cygni B",
@@ -876,7 +876,7 @@
    "vx": 3.83778e-05,
    "vy": 1.18132e-05,
    "vz": -5.82524e-05,
-   "no_planet_hint": "Hot F-type subgiant \u2014 pulsations and broadened lines limit RV precision; the white-dwarf companion adds glare."
+   "no_planet_hint": "Hot F-type subgiant. Pulsations and broadened lines limit RV precision; the white-dwarf companion adds glare."
   },
   {
    "name": "Procyon B",
@@ -904,7 +904,7 @@
    "vx": 3.83778e-05,
    "vy": 1.18132e-05,
    "vz": -5.82524e-05,
-   "no_planet_hint": "White dwarf \u2014 the inner planetary system did not survive the giant phase."
+   "no_planet_hint": "White dwarf. The inner planetary system did not survive the giant phase."
   },
   {
    "name": "Struve 2398 B",
@@ -932,7 +932,7 @@
    "vx": -9.28201e-05,
    "vy": 7.12351e-05,
    "vz": 5.49851e-05,
-   "no_planet_hint": "M-dwarf binary \u2014 flare activity and the companion complicate searches."
+   "no_planet_hint": "M-dwarf binary. Flare activity and the companion complicate searches."
   },
   {
    "name": "Struve 2398 A",
@@ -960,7 +960,7 @@
    "vx": -8.9218e-05,
    "vy": 7.31532e-05,
    "vz": 5.18241e-05,
-   "no_planet_hint": "M-dwarf binary \u2014 activity signals so far, no confirmed planet."
+   "no_planet_hint": "M-dwarf binary: activity signals so far, no confirmed planet."
   },
   {
    "name": "Groombridge 34 A",
@@ -1026,7 +1026,7 @@
    "vx": -3.866e-07,
    "vy": 0.0001632342,
    "vz": 4.44649e-05,
-   "no_planet_hint": "Flare star \u2014 activity noise; note its quieter primary does host a planet."
+   "no_planet_hint": "Flare star with activity noise. Note its quieter primary does host a planet."
   },
   {
    "name": "DX Cancri",
@@ -1054,7 +1054,7 @@
    "vx": 3.15746e-05,
    "vy": 6.28821e-05,
    "vz": -6.08656e-05,
-   "no_planet_hint": "Ultracool flare star \u2014 extremely faint and magnetically noisy, barely surveyable by RV."
+   "no_planet_hint": "Ultracool flare star: extremely faint and magnetically noisy, barely surveyable by RV."
   },
   {
    "name": "Epsilon Indi A",
@@ -1392,7 +1392,7 @@
     "Kapteyn b (disputed)"
    ],
    "discovered": 1898,
-   "note": "A halo star from an ancient, disrupted dwarf galaxy \u2014 orbiting the wrong way round the Milky Way.",
+   "note": "A halo star from an ancient, disrupted dwarf galaxy, orbiting the wrong way round the Milky Way.",
    "planet_data": [
     {
      "name": "Kapteyn b",
@@ -1438,7 +1438,7 @@
    "vx": -0.000126263,
    "vy": -0.0001612232,
    "vz": -0.0001000138,
-   "no_planet_hint": "Bright but magnetically active M dwarf \u2014 flare jitter; surveys so far empty."
+   "no_planet_hint": "Bright but magnetically active M dwarf. Flare jitter; surveys so far empty."
   },
   {
    "name": "SCR 1845-6357 A",
@@ -1456,7 +1456,7 @@
    "planets": 0,
    "planet_names": [],
    "discovered": 2004,
-   "note": "Missed until 2004 \u2014 hidden against the crowded southern Milky Way despite being one of our nearest neighbours.",
+   "note": "Missed until 2004, hidden against the crowded southern Milky Way despite being one of our nearest neighbours.",
    "planet_data": [],
    "pm": 2651.1,
    "rv": 0,
@@ -1466,7 +1466,7 @@
    "vx": 0.0001667561,
    "vy": -5.8734e-06,
    "vz": 1.87377e-05,
-   "no_planet_hint": "Ultracool dwarf found only in 2004 \u2014 too faint for the precision RV surveys that find small planets."
+   "no_planet_hint": "Ultracool dwarf found only in 2004, too faint for the precision RV surveys that find small planets."
   },
   {
    "name": "SCR 1845-6357 B",
@@ -1494,7 +1494,7 @@
    "vx": 0.000166755,
    "vy": -5.9065e-06,
    "vz": 1.87369e-05,
-   "no_planet_hint": "A T-type brown dwarf \u2014 far beyond the reach of planet searches."
+   "no_planet_hint": "A T-type brown dwarf, far beyond the reach of planet searches."
   },
   {
    "name": "Kruger 60 A",
@@ -1522,7 +1522,7 @@
    "vx": -5.41115e-05,
    "vy": -3.69292e-05,
    "vz": -0.0001118108,
-   "no_planet_hint": "Close flare-star binary \u2014 activity plus binary dynamics hide small planets."
+   "no_planet_hint": "Close flare-star binary. Activity plus binary dynamics hide small planets."
   },
   {
    "name": "Kruger 60 B",
@@ -1550,7 +1550,7 @@
    "vx": -5.41115e-05,
    "vy": -3.69292e-05,
    "vz": -0.0001118108,
-   "no_planet_hint": "Close flare-star binary \u2014 the companion's orbit and flares defeat searches."
+   "no_planet_hint": "Close flare-star binary. The companion's orbit and flares defeat searches."
   },
   {
    "name": "DENIS J1048-3956",
@@ -1578,7 +1578,7 @@
    "vx": 6.17229e-05,
    "vy": 5.92159e-05,
    "vz": -4.83581e-05,
-   "no_planet_hint": "Ultracool dwarf at the hydrogen-burning limit \u2014 too faint for precision RV."
+   "no_planet_hint": "Ultracool dwarf at the hydrogen-burning limit, too faint for precision RV."
   },
   {
    "name": "UGPS J0722-0540",
@@ -1606,7 +1606,7 @@
    "vx": 5.43477e-05,
    "vy": 2.28848e-05,
    "vz": 2.3001e-05,
-   "no_planet_hint": "A ~500 K T dwarf \u2014 no current method can search it for planets."
+   "no_planet_hint": "A ~500 K T dwarf. No current method can search it for planets."
   },
   {
    "name": "Wolf 1061",
@@ -1690,7 +1690,7 @@
    "vx": 0.0001742255,
    "vy": 0.0001242601,
    "vz": -0.0001670813,
-   "no_planet_hint": "White dwarf with a metal-polluted atmosphere \u2014 forensic debris of shredded planetary material. It had planets; it ate them."
+   "no_planet_hint": "White dwarf with a metal-polluted atmosphere: forensic debris of shredded planetary material. It had planets; it ate them."
   },
   {
    "name": "Gliese 1",
@@ -1718,7 +1718,7 @@
    "vx": -4.29408e-05,
    "vy": 0.0003862684,
    "vz": -0.0001762325,
-   "no_planet_hint": "Quiet and well surveyed \u2014 nothing above the detection threshold yet; smaller or more distant planets could remain."
+   "no_planet_hint": "Quiet and well surveyed, but nothing above the detection threshold yet; smaller or more distant planets could remain."
   },
   {
    "name": "TZ Arietis",
@@ -1784,7 +1784,7 @@
    "vx": -4.9164e-06,
    "vy": 0.0001244261,
    "vz": -2.35801e-05,
-   "no_planet_hint": "Tight flare-star binary \u2014 activity noise plus a close companion defeat searches."
+   "no_planet_hint": "Tight flare-star binary. Activity noise plus a close companion defeat searches."
   },
   {
    "name": "Wolf 424 B",
@@ -1812,7 +1812,7 @@
    "vx": -4.9164e-06,
    "vy": 0.0001244261,
    "vz": -2.35801e-05,
-   "no_planet_hint": "Tight flare-star binary \u2014 same story as its partner."
+   "no_planet_hint": "Tight flare-star binary, same story as its partner."
   },
   {
    "name": "Gliese 687",
@@ -1915,7 +1915,7 @@
    "planets": 0,
    "planet_names": [],
    "discovered": 1957,
-   "note": "The fourth-nearest white dwarf \u2014 a carbon-atmosphere stellar remnant older than the Sun.",
+   "note": "The fourth-nearest white dwarf: a carbon-atmosphere stellar remnant older than the Sun.",
    "planet_data": [],
    "pm": 2683.3,
    "rv": 0,
@@ -1925,7 +1925,7 @@
    "vx": 1.06978e-05,
    "vy": -0.0001961425,
    "vz": -1.07532e-05,
-   "no_planet_hint": "White dwarf \u2014 inner planets would not have survived the red-giant phase."
+   "no_planet_hint": "White dwarf. Inner planets would not have survived the red-giant phase."
   },
   {
    "name": "GJ 1245 A",
@@ -1953,7 +1953,7 @@
    "vx": 6.32936e-05,
    "vy": -7.52677e-05,
    "vz": -7.4495e-05,
-   "no_planet_hint": "Flare-star triple \u2014 activity and two companions defeat precision searches."
+   "no_planet_hint": "Flare-star triple. Activity and two companions defeat precision searches."
   },
   {
    "name": "Gliese 876",
@@ -2046,7 +2046,7 @@
    "vx": 0.000108599,
    "vy": 4.3876e-05,
    "vz": -4.8642e-05,
-   "no_planet_hint": "Faint and little surveyed \u2014 no deep RV campaign published yet."
+   "no_planet_hint": "Faint and little surveyed, with no deep RV campaign published yet."
   },
   {
    "name": "GJ 1002",
@@ -2067,7 +2067,7 @@
     "GJ 1002 c"
    ],
    "discovered": 1978,
-   "note": "Quiet red dwarf with two temperate Earth-mass planets \u2014 one of the nearest potentially habitable systems (2022).",
+   "note": "Quiet red dwarf with two temperate Earth-mass planets, one of the nearest potentially habitable systems (2022).",
    "planet_data": [
     {
      "name": "GJ 1002 b",
@@ -2149,7 +2149,7 @@
    "vx": -3.34182e-05,
    "vy": 0.0003543531,
    "vz": 0.0002121438,
-   "no_planet_hint": "WX UMa is an extreme flare star \u2014 activity noise swamps any planet signal."
+   "no_planet_hint": "WX UMa is an extreme flare star. Activity noise swamps any planet signal."
   },
   {
    "name": "AD Leonis",
@@ -2167,7 +2167,7 @@
    "planets": 0,
    "planet_names": [],
    "discovered": 1949,
-   "note": "One of the most active flare stars known \u2014 a favourite laboratory for stellar eruptions.",
+   "note": "One of the most active flare stars known, and a favourite laboratory for stellar eruptions.",
    "planet_data": [],
    "pm": 504.1,
    "rv": 12.7,
@@ -2177,7 +2177,7 @@
    "vx": -2.0473e-05,
    "vy": 5.3111e-05,
    "vz": 1.10016e-05,
-   "no_planet_hint": "One of the most active flare stars known \u2014 a claimed planet (2020) was retracted as an activity artefact."
+   "no_planet_hint": "One of the most active flare stars known. A claimed planet (2020) was retracted as an activity artefact."
   },
   {
    "name": "Gliese 832",
@@ -2198,7 +2198,7 @@
     "Gliese 832 c"
    ],
    "discovered": 1900,
-   "note": "A Jupiter analogue plus a super-Earth \u2014 a scaled-down Solar System.",
+   "note": "A Jupiter analogue plus a super-Earth: a scaled-down Solar System.",
    "planet_data": [
     {
      "name": "Gliese 832 c",
@@ -2337,7 +2337,7 @@
    "vx": 8.19985e-05,
    "vy": -0.000235228,
    "vz": -0.000249743,
-   "no_planet_hint": "White dwarf \u2014 close-in planets were engulfed when the progenitor became a red giant."
+   "no_planet_hint": "White dwarf. Close-in planets were engulfed when the progenitor became a red giant."
   },
   {
    "name": "40 Eridani C",
@@ -2365,7 +2365,7 @@
    "vx": 8.19985e-05,
    "vy": -0.000235228,
    "vz": -0.000249743,
-   "no_planet_hint": "Red-dwarf flare star \u2014 activity noise masks small planets; its K-dwarf primary is the promising target."
+   "no_planet_hint": "Red-dwarf flare star. Activity noise masks small planets; its K-dwarf primary is the promising target."
   }
  ]
 }
