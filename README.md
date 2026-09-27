@@ -52,7 +52,7 @@ the viewer can orient the Milky Way plane correctly relative to the equatorial g
 tools/build_catalog.py   # curated table → web/data/stars.json (positions computed here)
 web/index.html           # UI shell + styling
 web/proxima.js           # Three.js scene, interaction, info card
-web/data/stars.json      # generated catalogue (51 objects)
+web/data/stars.json      # generated catalogue (64 objects)
 ```
 
 Rebuild the catalogue: `python3 tools/build_catalog.py`
@@ -80,7 +80,7 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 ## Controls
 
 - **drag** orbit · **scroll** zoom · **click** a star for its stat card
-- **Planetary-system strip** (on the stat card, for the 23 planet-hosts + Sun): each
+- **Planetary-system strip** (on the stat card, for the 24 planet-hosts + Sun): each
   planet plotted on a log-AU axis. Dot size = mass class (rocky/Neptune/Jovian by
   colour), green ring = temperate orbit, dashed = disputed. Tap a dot for distance,
   mass and discovery year.
