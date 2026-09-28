@@ -228,13 +228,18 @@ function setTime(t) {
       `nearest: <b>${bestName}</b> · ${bestD.toFixed(2)} ly`;
   // keep the selected star's live distance current
   if (selected) {
-    const dd = document.getElementById("i-dist");
-    if (dd && selected.data.name !== "Sun") {
-      const d = selected.pos.length();
-      dd.textContent = `${d.toFixed(2)} ly · ${(d / 3.26156).toFixed(2)} pc`;
-    }
+    refreshCardDistance();
     controls.target.copy(selected.pos);   // recentre so the motion stays framed
   }
+}
+
+// The card's Distance row shows where the star is at the current time, not
+// today's catalogue figure, so a star picked after scrubbing reads right.
+function refreshCardDistance() {
+  const dd = document.getElementById("i-dist");
+  if (!dd || !selected || selected.data.name === "Sun") return;
+  const d = selected.pos.length();
+  dd.textContent = `${d.toFixed(2)} ly · ${(d / 3.26156).toFixed(2)} pc`;
 }
 
 let playing = false;
@@ -437,6 +442,7 @@ function select(o, { fly = true } = {}) {
   selRing.visible = true;
   if (isMobile()) document.body.classList.remove("panel-open"); // make way for the info sheet
   showInfo(o.data);
+  if (TIME !== 0) refreshCardDistance();
   markResult(o.data.name);
   location.hash = encodeURIComponent(o.data.name);
   if (fly) {

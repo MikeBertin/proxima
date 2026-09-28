@@ -28,11 +28,14 @@ sense of scale; a faint Milky Way disc shows the galactic plane the whole
 neighbourhood is embedded in, with a signpost pointing 26,000 ly toward the
 Galactic Centre (Sgr A*).
 
-64 objects within ~5 pc (16.4 ly), the complete RECONS census: 3 Sun-like
-stars, dozens of red dwarfs, four white dwarfs (Sirius B, Procyon B,
-Van Maanen's Star, Gliese 440), brown dwarfs from Luhman 16 down to ~500 K
-T dwarfs and 25 planet-hosting systems (59 known planets). They run from Proxima b
-to the four-world resonant chain of Gliese 876.
+64 objects within ~5 pc (16.4 ly): the Sun and 63 neighbours from the RECONS
+census. Three are G stars like the Sun (counting the Sun), 43 are red dwarfs, five
+are white dwarfs (Sirius B, Procyon B, Van Maanen's Star, Gliese 440 and
+40 Eridani B) and five are brown dwarfs, from Luhman 16 down to the ~250 K
+WISE 0855-0714. Besides the Sun, 24 of them host planets, 51 known exoplanets
+between them, running from Proxima b to the four-world resonant chain of Gliese 876.
+A few faint companions are not separate points yet: the Epsilon Indi B brown dwarf
+pair, and GJ 1245 B and C, which sit inside the GJ 1245 entry.
 
 ## The data
 
@@ -94,7 +97,7 @@ Deep-link to a star with a hash: `#Barnard's%20Star`, `#Tau%20Ceti`, `#Sirius%20
 - **Orient**: *galactic plane* (default, with galactic north up, so the Milky Way reads flat
   and the Galactic Centre sits in the background) or *equatorial* (RA/Dec frame). Orbiting
   keeps whichever plane you chose level.
-- **Show**: labels · distance rings · galaxy · planet-hosts (highlights the 23 hosts) ·
+- **Show**: labels · distance rings · galaxy · planet-hosts (highlights the 24 hosts) ·
   motion trails (with arrowheads marking direction of travel) · 3D grid (soft light-grey
   lattice at 5-ly spacing, Sun at the origin, oriented to the chosen frame)
 - **Filter**: all · has planets · bright (spectral O–K)
